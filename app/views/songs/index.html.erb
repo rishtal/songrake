@@ -1,0 +1,32 @@
+<div id="song_app">
+
+<%= render 'form' %>
+
+<hr/>
+<h1>Listing Songs via Rails</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>By</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @songs.each do |song| %>
+  <tr>
+    <td><%= song.title %></td>
+    <td><%= song.by %></td>
+    <td><%= link_to 'Show', song %></td>
+    <td><%= link_to 'Edit', edit_song_path(song) %></td>
+    <td><%= link_to 'Destroy', song, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Song', new_song_path %>
+</div>
+

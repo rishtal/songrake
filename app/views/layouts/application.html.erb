@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Songrake</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="user-auth-nav" style="float:right">
+  <% if user_signed_in? %>
+  Signed in as <%= current_user.email %>. Not you?
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> |
+  <%= link_to('settings', edit_user_registration_path) %> 
+  <% else %>
+  <%= link_to('Login', new_user_session_path)  %> | 
+  <%= link_to('Register', new_user_registration_path)  %>
+  <% end %>
+</div>
+
+
+
+<%= yield %>
+
+
+</body>
+</html>
