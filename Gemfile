@@ -9,8 +9,10 @@ gem 'sqlite3'
 gem 'devise'
 
 group :production do
-  # gems specifically for Heroku go here
   gem 'pg'
+end
+group :development, :test do
+  gem 'sqlite3'
 end
 
 # Gems used only for assets and not required
