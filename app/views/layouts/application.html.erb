@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Songrake</title>
+  <title>SongRake</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="user-auth-nav" style="float:right">
-  <% if user_signed_in? %>
-  Signed in as <%= current_user.email %>. Not you?
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> |
-  <%= link_to('settings', edit_user_registration_path) %> 
-  <% else %>
-  <%= link_to('Login', new_user_session_path)  %> | 
-  <%= link_to('Register', new_user_registration_path)  %>
-  <% end %>
-</div>
+<div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">SongRake</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+	          <form action="" class="pull-right">
+		          
+						  <% if user_signed_in? %>
+						  Signed in as <%= current_user.email %>. Not you?
+						  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> |
+						  <%= link_to('settings', edit_user_registration_path) %> 
+						  <% else %>
+						  <%= link_to('Login', new_user_session_path)  %> | 
+						  <%= link_to('Register', new_user_registration_path)  %>
+						  <% end %>
+					
+				  </div>
+	            <!--<input class="input-small" type="text" placeholder="Username">-->
+	            <!--<input class="input-small" type="password" placeholder="Password">-->
+	            <!--<button class="btn" type="submit">Sign in</button>-->
+	          </form>
+        </div>
+      </div>
+    </div>
 
+    <div class="container">
+    	<div class="content">
 
+    	<%= yield %>
+	    	
+	    </div>	
+	    	<!--
+      <div class="content">
+        <div class="page-header">
+        	
+          		
+          	
+        </div>
+        
+      </div>
+      -->
+   </div>
 
-<%= yield %>
-
+    <!-- /container -->
+   <footer>
+   <p>Copywright 2011</p>
+   </footer>
 
 </body>
 </html>

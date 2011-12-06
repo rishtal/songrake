@@ -1,15 +1,22 @@
 Songrake::Application.routes.draw do
   #get "home/index"
+  #get "registration"
 
-  devise_for :users
-  root :to => "songs#index"
+  resources :songs
+  #resources :registrations
+  
+
+ devise_for :users, :controllers => {:registrations => "registrations"}
+  
+  root :to => "home#index"
   
   #devise_for :user do
    # root :to => "songs#index"
   #end
 
-  resources :songs
-  #get "songs/index"
+  #match '/user' => "songs#index", :as => :user_root
+
+ 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
