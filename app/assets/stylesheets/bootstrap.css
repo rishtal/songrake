@@ -231,6 +231,7 @@ a:hover {
 }
 .pull-right {
   float: right;
+
 }
 .pull-left {
   float: left;
@@ -579,6 +580,7 @@ fieldset legend {
   /* IE6-7 */
 
 }
+
 form .clearfix {
   margin-bottom: 18px;
   zoom: 1;
@@ -660,6 +662,7 @@ input[type=button], input[type=reset], input[type=submit] {
   width: auto;
   height: auto;
   margin-top: 10px;
+  margin-left: 290px;
 }
 select, input[type=file] {
   height: 27px;
@@ -1346,6 +1349,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 }
 .topbar form.pull-right {
   float: right;
+  color: white;
 }
 .topbar input {
   background-color: #444;

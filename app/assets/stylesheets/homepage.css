@@ -17,6 +17,13 @@
 	top: 135px;
 }
 
-.signup {
-	text-align: right;
+#signup label{
+	text-align: left;
+	margin-right: 50px;
+	width: 300px;
+	padding: auto;
+}
+
+#signup button{
+text-align: right;
 }

@@ -1,4 +1,8 @@
-<%= form_for(@song) do |f| %>
+
+
+
+
+<%= simple_form_for(@song) do |f| %>
   <% if @song.errors.any? %>
 
     <div id="error_explanation">
@@ -12,16 +16,22 @@
     </div>
   <% end %>
 
-
+  
+  <%= f.input :title,:label => 'Song Name', :input_html => { :rows => 1 }%>
+  <br/>
+  <%= f.input :by, :label => 'Artist', :input_html => { :rows => 1 } %>
+  <%= f.button :submit, 'Add Song Request' %>
+<!--
 <div class="addsong">
  
   <div class="title"
     <%= f.label :title %>
-    <%= f.text_area :title, rows: 2 %>
+    <%= f.text_area :title, rows: 1%>
   </div>
+  <br/>
   <div class="by">
     <%= f.label :by %>
-    <%= f.text_area :by, rows: 2 %>
+    <%= f.text_area :by, rows: 1 %>
   </div>
 
   <div class="actions">
@@ -29,5 +39,7 @@
   </div>
 
 </div>
+-->
 
 <% end %>
+
