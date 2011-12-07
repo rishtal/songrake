@@ -10,8 +10,10 @@ gem 'devise'
 gem 'simple_form'
 
 group :production do
-  # gems specifically for Heroku go here
   gem 'pg'
+end
+group :development, :test do
+  gem 'sqlite3'
 end
 
 gem 'css-bootstrap-rails'
