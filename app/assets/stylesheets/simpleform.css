@@ -1,9 +1,16 @@
 .simple_form label {
   float: left;
-  width: 200px;
+  width: 135px;
   text-align: left;
-  margin: 0px 2px;
-  
+  margin: 0px 20px 0px 0px;
+}
+
+
+label.text.optional{
+  float: left;
+  width: 200px;
+  text-align: right;
+  margin: 0px 10px 20px -100px;
 }
 
 .simple_form div.input {
@@ -11,7 +18,7 @@
 }
 
 .simple_form div.boolean, .simple_form input[type='submit'] {
-  margin-left: 270px;
+  margin-left: 100px;
 }
 
 .simple_form div.boolean label, .simple_form label.collection_radio {
