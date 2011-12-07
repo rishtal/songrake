@@ -1,4 +1,6 @@
 Songrake::Application.routes.draw do
+  get "status/index"
+
   get "registrations/new"
 
   #get "home/index"
@@ -8,6 +10,7 @@ Songrake::Application.routes.draw do
   resources :songs
   #resources :registrations
   resources :about
+  resources :status
 
 devise_for :users, :controllers => { :registrations => "registrations" }
   #devise_for :users, :controllers => {:registrations => "registrations"}
