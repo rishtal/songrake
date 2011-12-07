@@ -2,22 +2,38 @@ Songrake::Application.routes.draw do
   #get "home/index"
   #get "registration"
 
-  resources :about
+
   resources :songs
-  resource :users, :only => [:show, :update]
   resources :registrations
+  resources :about
   
 
  devise_for :users, :controllers => {:registrations => "registrations"}
   
   root :to => "home#index"
-  
-  devise_for :user do
+
+devise_for :user do
     root :to => "songs#index"
   end
 
-  #when you login or sign-up you will be directed to songs/index
+#devise_for :users, :controllers => {:registrations => "registrations"}
+ #resources :registrations
+ #resources :songs
+ #resources :about
+# resource :users, :only => [:show, :update]
+  
+  
+  #root :to => "home#index"
+    #when you login or sign-up you will be directed to songs/index
   match '/user' => "songs#index", :as => :user_root
+
+   
+  
+  
+
+ 
+
+
 
  
 
