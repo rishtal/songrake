@@ -4,17 +4,17 @@ Songrake::Application.routes.draw do
 
 
   resources :songs
-  resources :registrations
+  #resources :registrations
   resources :about
-  
 
- devise_for :users, :controllers => {:registrations => "registrations"}
-  
+  #devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users
+
   root :to => "home#index"
 
-devise_for :user do
-    root :to => "songs#index"
-  end
+  #devise_for :user do
+  #  root :to => "songs#index"
+  #end
 
 #devise_for :users, :controllers => {:registrations => "registrations"}
  #resources :registrations
