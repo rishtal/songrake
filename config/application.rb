@@ -41,7 +41,7 @@ module Songrake
 
     # Enable the asset pipeline
     #config.assets.initialize_on_precompile = false
-    config.assets.enabled = true
+    config.assets.enabled = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
