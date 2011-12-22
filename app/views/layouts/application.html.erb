@@ -9,54 +9,48 @@
 <body>
 
 <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <a class="brand" href="/">SongRake</a>
-          <ul class="nav">
-            <li><a href="/songs">Song Requests</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="status">Updates</a></li>
-          </ul>
-	          <form action="" class="pull-right">
-		          
-						  <% if user_signed_in? %>
-						  Signed in as <%= current_user.email %>. Not you?
-						  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> |
-						  <%= link_to('settings', edit_user_registration_path) %> 
-						  <% else %>
-						  <%= link_to('Login', new_user_session_path)  %> 
-						   <!-- <%= link_to('Register', new_user_registration_path) %> -->
-						  <% end %>
-					
-				  </div>
-	            <!--<input class="input-small" type="text" placeholder="Username">-->
-	            <!--<input class="input-small" type="password" placeholder="Password">-->
-	            <!--<button class="btn" type="submit">Sign in</button>-->
-	          </form>
-        </div>
-      </div>
-    </div>
-
+  <div class="fill">
     <div class="container">
-    	<div class="content">
+      <a class="brand" href="/">SongRake</a>
+      <ul class="nav">
+        <li><a href="/songs">Song Requests</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/status">Updates</a></li>
+      </ul>
+      <form action="" class="pull-right">
 
-    	<%= yield %>
-	    	
-	    </div>	
-	    	<!--
-      <div class="content">
-        <div class="page-header">
-        	
-          		
-          	
-        </div>
-        
-      </div>
-      -->
-   </div>
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> |
+          <%= link_to('settings', edit_user_registration_path) %>
+        <% else %>
+          <%= link_to('Login', new_user_session_path)  %>
+          <!-- <%= link_to('Register', new_user_registration_path) %> -->
+        <% end %>
+      </form>
+    </div>
+    <!--<input class="input-small" type="text" placeholder="Username">-->
+    <!--<input class="input-small" type="password" placeholder="Password">-->
+    <!--<button class="btn" type="submit">Sign in</button>-->
+  </div>
+</div>
+</div>
 
-   <script type="text/javascript">
+<div class="container">
+  <div class="content">
 
+    <%= yield %>
+
+  </div>
+  <!--
+  <div class="content">
+    <div class="page-header">
+    </div>
+  </div>
+  -->
+</div>
+
+<script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27550707-1']);
   _gaq.push(['_trackPageview']);
@@ -69,10 +63,10 @@
 
 </script>
 
-    <!-- /container -->
-      <!--<footer>
-      <div class="container">
-        <p class="centerfooter">&copy; SongRake 2011</p>
+<!-- /container -->
+<!--<footer>
+<div class="container">
+<p class="centerfooter">&copy; SongRake 2011</p>
       </div>
       </footer>
       -->
