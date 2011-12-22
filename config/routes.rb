@@ -1,47 +1,17 @@
 Songrake::Application.routes.draw do
-  get "status/index"
-
   get "registrations/new"
 
-  #get "home/index"
-  #get "registration"
-
+  get 'about' => "about#index"
+  get 'status' => "status#index"
 
   resources :songs
-  #resources :registrations
-  resources :about
-  resources :status
 
-devise_for :users, :controllers => { :registrations => "registrations" }
-  #devise_for :users, :controllers => {:registrations => "registrations"}
-  #devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   root :to => "home#index"
 
-  #devise_for :user do
-  #  root :to => "songs#index"
-  #end
-
-#devise_for :users, :controllers => {:registrations => "registrations"}
- #resources :registrations
- #resources :songs
- #resources :about
-# resource :users, :only => [:show, :update]
-  
-  
-  #root :to => "home#index"
-    #when you login or sign-up you will be directed to songs/index
+  #when you login or sign-up you will be directed to songs/index
   match '/user' => "songs#index", :as => :user_root
-
-   
-  
-  
-
- 
-
-
-
- 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -92,7 +62,7 @@ devise_for :users, :controllers => { :registrations => "registrations" }
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
- # root to: 'home#index'
+  # root to: 'home#index'
 
   # See how all your routes lay out with "rake routes"
 
