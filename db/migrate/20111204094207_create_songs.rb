@@ -1,8 +1,8 @@
 class CreateSongs < ActiveRecord::Migration
   def change
     create_table :songs do |t|
-      t.text :title
-      t.text :by
+      t.string :title
+      t.string :by
 
       t.timestamps
     end
