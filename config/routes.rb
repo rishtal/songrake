@@ -1,4 +1,6 @@
 Songrake::Application.routes.draw do
+  resources :playlists
+
   get "registrations/new"
 
   get 'about' => "about#index"
