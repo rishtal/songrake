@@ -11,15 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111224005605) do
+ActiveRecord::Schema.define(:version => 20111231005638) do
 
   create_table "playlists", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "type"
+    t.string   "playlist_type"
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "playlists_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "playlist_id"
   end
 
   create_table "songs", :force => true do |t|
@@ -32,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20111224005605) do
     t.integer  "playlist_id"
     t.integer  "requester_id"
   end
+
+  add_index "songs", ["title", "artist", "playlist_id"], :name => "index_unique_song_in_playlist", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
