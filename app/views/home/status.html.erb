@@ -1,0 +1,33 @@
+<div class="status">
+  <h4>Find out about updates below...</h4>
+  <div class="twitter">
+    <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+    <script>
+      new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 10,
+        interval: 30000,
+        width: 250,
+        height: 220,
+        theme: {
+          shell: {
+            background: '#000000',
+            color: '#ffffff'
+          },
+          tweets: {
+            background: '#3d3d3d',
+            color: '#ffffff',
+            links: '#bdedff'
+          }
+        },
+        features: {
+          scrollbar: true,
+          loop: false,
+          live: true,
+          behavior: 'all'
+        }
+      }).render().setUser('SongRake').start();
+    </script>
+  </div>
+</div>

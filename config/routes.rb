@@ -3,8 +3,8 @@ Songrake::Application.routes.draw do
 
   get "registrations/new"
 
-  get 'about' => "about#index"
-  get 'status' => "status#index"
+  get 'about' => "home#about"
+  get 'status' => "home#status"
 
   resources :songs
 
