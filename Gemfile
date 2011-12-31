@@ -40,7 +40,12 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem 'factory_girl_rails', "~> 1.2"
+
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
+  gem 'ZenTest'
+  gem 'autotest-rails-pure'
+  gem 'minitest'
 end

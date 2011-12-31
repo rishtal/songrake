@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class SongsControllerTest < ActionController::TestCase
+
+=begin
   setup do
     @song = songs(:one)
   end
@@ -46,4 +48,5 @@ class SongsControllerTest < ActionController::TestCase
 
     assert_redirected_to songs_path
   end
+=end
 end
