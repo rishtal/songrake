@@ -14,6 +14,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1.json
   def show
     @playlist = Playlist.find(params[:id])
+    @song = Song.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +26,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/new.json
   def new
     @playlist = Playlist.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @playlist }
@@ -41,6 +42,7 @@ class PlaylistsController < ApplicationController
   # POST /playlists.json
   def create
     @playlist = Playlist.new(params[:playlist])
+    @playlist.creator = current_user
 
     respond_to do |format|
       if @playlist.save

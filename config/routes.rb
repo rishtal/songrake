@@ -1,19 +1,19 @@
 Songrake::Application.routes.draw do
-  resources :playlists
 
-  get "registrations/new"
-
+  root :to => "home#index"
   get 'about' => "home#about"
   get 'status' => "home#status"
 
+  get "registrations/new"
+  devise_for :users, :controllers => { :registrations => "registrations" }, :path_prefix => 'd'
+
+  match "users/:id" => "users#show", :as => :user_profile
+
+  resources :playlists
   resources :songs
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
-
-  root :to => "home#index"
-
   #when you login or sign-up you will be directed to songs/index
-  match '/user' => "songs#index", :as => :user_root
+  #match '/user' => "songs#index", :as => :user_root
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

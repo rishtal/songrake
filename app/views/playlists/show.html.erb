@@ -1,25 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @playlist.name %>
-</p>
+<h1><%= @playlist.name %></h1>
 
-<p>
-  <b>Description:</b>
-  <%= @playlist.description %>
-</p>
+<h3>Submit a song</h3>
+<br>
+<%= render "songs/form" %>
 
-<p>
-  <b>Type:</b>
-  <%= @playlist.playlist_type %>
-</p>
-
-<p>
-  <b>Creator:</b>
-  <%= @playlist.creator_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<%= link_to 'Back', playlists_path %>
+<h3>Song list</h3>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Song</th>
+      <th>Artist</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @playlist.songs.each do |song| %>
+  <tr>
+    <td><%= song.title %></td>
+    <td><%= song.artist %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>

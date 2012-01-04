@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Me</h3>
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<h3>My Playlists</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th></th>
+  </tr>
+<% @playlists.each do |playlist| %>
+  <tr>
+    <td><%= playlist.name %></td>
+    <td><%= playlist.description %></td>
+    <td><%= playlist.playlist_type %></td>
+    <td><%= link_to "Show", playlist_path(playlist.id)%></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "Create new playlist", new_playlist_path, :class => "btn"%>

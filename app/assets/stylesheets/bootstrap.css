@@ -2476,7 +2476,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
       .content {
         background-color: whitesmoke;
         margin: 30px 0px 100px 0px;
-        height: 250px;
+        height: 100%;
         padding: 60px;
         -webkit-border-radius: 10px;
            -moz-border-radius: 10px;
