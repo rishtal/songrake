@@ -2,7 +2,8 @@ class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.json
   def index
-    @playlists = Playlist.all
+    #only show listed playlist. Don't show unlisted playlists
+    @playlists = Playlist.find_all_by_playlist_type("Listed")
 
     respond_to do |format|
       format.html # index.html.erb
