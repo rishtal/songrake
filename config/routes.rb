@@ -4,12 +4,11 @@ Songrake::Application.routes.draw do
   get 'about' => "home#about"
   get 'status' => "home#status"
 
-  get "registrations/new"
   devise_for :users, :path_prefix => 'd'
-
   match "users/:id" => "users#show", :as => :user_profile
 
   resources :playlists
+  post "playlists/join"
   resources :songs
 
   #when you login or sign-up you will be directed to songs/index

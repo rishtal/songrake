@@ -83,4 +83,12 @@ class PlaylistsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def join
+    @playlist = Playlist.find(params[:playlist_id])
+    @playlist.members << current_user
+    respond_to do |format|
+      format.html { redirect_to playlist_path(@playlist.id)}
+    end
+  end
 end

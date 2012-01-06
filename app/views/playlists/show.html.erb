@@ -2,6 +2,11 @@
 
 <h1><%= @playlist.name %></h1>
 
+<%= form_tag :controller => "playlists", :action => "join" do %>
+  <%= hidden_field_tag "playlist_id", @playlist.id %>
+  <%= submit_tag "Join Playlist", :class => "btn"%>
+<% end %>
+
 <h3>Submit a song</h3>
 <br>
 <%= render "songs/form" %>

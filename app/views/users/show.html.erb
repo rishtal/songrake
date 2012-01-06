@@ -1,27 +1,57 @@
 <p id="notice"><%= notice %></p>
 
 <h3>Me</h3>
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+<div class="row">
+  <div class="span3"><b>Username:</b></div>
+  <div class="span5"><%= @user.username %></div>
+</div>
+<div class="row">
+  <div class="span3"><b>Email:</b></div>
+  <div class="span5"><%= @user.email %></div>
+</div>
 
 <h3>My Playlists</h3>
 <table>
+  <thead>
   <tr>
     <th>Name</th>
     <th>Description</th>
     <th>Type</th>
     <th></th>
   </tr>
-<% @playlists.each do |playlist| %>
+  </thead>
+  <tbody>
+  <% @my_playlists.each do |playlist| %>
+    <tr>
+      <td><%= playlist.name %></td>
+      <td><%= playlist.description %></td>
+      <td><%= playlist.playlist_type %></td>
+      <td><%= link_to "Show", playlist_path(playlist.id)%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>Other Playlists</h3>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @other_playlists.each do |playlist| %>
   <tr>
     <td><%= playlist.name %></td>
-    <td><%= playlist.description %></td>
+    <td><%= playlist.description %> </td>
     <td><%= playlist.playlist_type %></td>
     <td><%= link_to "Show", playlist_path(playlist.id)%></td>
   </tr>
-<% end %>
+  <% end %>
+  </tbody>
 </table>
 
 <%= link_to "Create new playlist", new_playlist_path, :class => "btn"%>
