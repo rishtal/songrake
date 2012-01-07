@@ -36,6 +36,7 @@ en:
       record_invalid: "Validation failed: %{errors}"
       #custom messages
       duplicate_song: "has already been added to the playlist"
+      duplicate_role: "is already a member of this playlist"
     template: &errors_template
       header:
         one: "1 error prohibited this %{model} from being saved"

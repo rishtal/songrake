@@ -9,7 +9,6 @@ FactoryGirl.define do
   factory :playlist do
     sequence(:name) {|n| "playlist#{n}"}
     playlist_type "Unlisted"
-    association :creator, :factory => :user
   end
 
   factory :song do
@@ -17,5 +16,11 @@ FactoryGirl.define do
     sequence(:artist) {|n| "artist#{n}"}
     association :playlist
     association :requester, :factory => :user
+  end
+
+  factory :role do
+    association :playlist
+    association :user
+    role "Member"
   end
 end

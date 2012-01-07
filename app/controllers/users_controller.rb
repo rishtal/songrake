@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @my_playlists = Playlist.find_all_by_creator_id(@user)
-    @other_playlists = @user.joined_playlists
+
+    @creator_roles = @user.roles.where(:role => "Creator")
+    @created_playlists = Array.new
+    @creator_roles.each { |r| @created_playlists << r.playlist }
+
+    @member_roles = @user.roles.where(:role => "Member")
+    @joined_playlists = Array.new
+    @member_roles.each { |r| @joined_playlists << r.playlist }
 
     respond_to do |format|
       format.html
       format.json {render json: @user}
     end
   end
+
+
 end
