@@ -1,16 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @playlist.name %></h1>
+<div class="row">
+  <div class="span5">
+    <h1><%= @playlist.name %></h1>
+  </div>
+  <div class="span1 offset4">
+    <%= form_tag :controller => "playlists", :action => "join" do %>
+      <%= hidden_field_tag "playlist_id", @playlist.id %>
+      <%= submit_tag "Join Playlist", :class => "btn"%>
+    <% end %>
+  </div>
+</div>
 
-<%= form_tag :controller => "playlists", :action => "join" do %>
-  <%= hidden_field_tag "playlist_id", @playlist.id %>
-  <%= submit_tag "Join Playlist", :class => "btn"%>
-<% end %>
-
+<br><br>
 <h3>Submit a song</h3>
 <br>
 <%= render "songs/form" %>
 
+<br><br>
 <h3>Song list</h3>
 <br>
 <table>
@@ -27,5 +34,23 @@
     <td><%= song.artist %></td>
   </tr>
 <% end %>
+  </tbody>
+</table>
+
+<br><br>
+<h3>Creator</h3>
+<div class="row">
+  <div class="span2">Creator:</div>
+  <div class="span5"><%= @creator.username %></div>
+</div>
+
+<br><br>
+<h3>Members</h3>
+<table>
+  <thead><tr><th>Name</th></tr></thead>
+  <tbody>
+  <% @members.each do |m| %>
+    <tr><td><%= m.username %></td></tr>
+  <% end %>
   </tbody>
 </table>

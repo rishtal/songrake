@@ -17,6 +17,17 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @song = Song.new
 
+    creator_array = @playlist.roles.where(:role => "Creator")
+    if creator_array.size == 1
+      @creator = creator_array[0].user
+    else
+      @creator = nil
+    end
+
+    members_roles = @playlist.roles.where(:role => "Member")
+    @members = Array.new
+    members_roles.each { |r| @members << r.user }
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @playlist }
@@ -42,11 +53,20 @@ class PlaylistsController < ApplicationController
   # POST /playlists
   # POST /playlists.json
   def create
+
+    error = true
     @playlist = Playlist.new(params[:playlist])
-    @playlist.creator = current_user
+    if @playlist.save
+      @role = @playlist.roles.build(:playlist_id => @playlist.id,
+                                    :user_id => current_user.id,
+                                    :role => "Creator")
+      if @role.save
+        error = false
+      end
+    end
 
     respond_to do |format|
-      if @playlist.save
+      if !error
         format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
         format.json { render json: @playlist, status: :created, location: @playlist }
       else
@@ -86,9 +106,13 @@ class PlaylistsController < ApplicationController
 
   def join
     @playlist = Playlist.find(params[:playlist_id])
-    @playlist.members << current_user
+    @role = Role.join_playlist_as_member(@playlist.id, current_user.id)
     respond_to do |format|
-      format.html { redirect_to playlist_path(@playlist.id)}
+      if @role.save
+        format.html { redirect_to playlist_path(@playlist.id), notice: "Successfully added to playlist"}
+      else
+        format. html { redirect_to playlist_path(@playlist.id), notice: "You are already a member of this playlist"}
+      end
     end
   end
 end

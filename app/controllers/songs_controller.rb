@@ -44,14 +44,13 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(params[:song])
     @song.requester = current_user
-    #@playlist = Playlist.find(@song.playlist_id)
 
     respond_to do |format|
       if @song.save
         format.html { redirect_to playlist_path(@song.playlist_id), notice: 'Song was successfully created.' }
         format.json { render json: @song, status: :created, location: @song }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to playlist_path(params[:song][:playlist_id]), notice: 'Song has already been added.'}
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
