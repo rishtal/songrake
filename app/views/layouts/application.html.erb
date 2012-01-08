@@ -15,7 +15,6 @@
       <ul class="nav">
         <li><%= link_to "Playlists", playlists_url %></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/status">Updates</a></li>
       </ul>
       <form action="" class="pull-right">
 
@@ -25,13 +24,9 @@
           <%= link_to('My Profile', user_profile_path(current_user)) %>
         <% else %>
           <%= link_to('Login', new_user_session_path)  %>
-          <!-- <%= link_to('Register', new_user_registration_path) %> -->
         <% end %>
       </form>
     </div>
-    <!--<input class="input-small" type="text" placeholder="Username">-->
-    <!--<input class="input-small" type="password" placeholder="Password">-->
-    <!--<button class="btn" type="submit">Sign in</button>-->
   </div>
 </div>
 </div>
@@ -42,12 +37,6 @@
     <%= yield %>
 
   </div>
-  <!--
-  <div class="content">
-    <div class="page-header">
-    </div>
-  </div>
-  -->
 </div>
 
 <script type="text/javascript">
@@ -60,15 +49,6 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
-
-<!-- /container -->
-<!--<footer>
-<div class="container">
-<p class="centerfooter">&copy; SongRake 2011</p>
-      </div>
-      </footer>
-      -->
 </body>
 </html>

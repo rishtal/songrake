@@ -4,8 +4,4 @@ class HomeController < ApplicationController
 
   def about
   end
-
-  def status
-  end
-  
 end
