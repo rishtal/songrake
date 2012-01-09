@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => [:index, :show]
+
   # GET /playlists
   # GET /playlists.json
   def index
@@ -7,7 +9,6 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @playlists }
     end
   end
 
@@ -30,7 +31,6 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @playlist }
     end
   end
 
@@ -41,7 +41,6 @@ class PlaylistsController < ApplicationController
     
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @playlist }
     end
   end
 
@@ -68,10 +67,8 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       if !error
         format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
-        format.json { render json: @playlist, status: :created, location: @playlist }
       else
         format.html { render action: "new" }
-        format.json { render json: @playlist.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,10 +81,8 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       if @playlist.update_attributes(params[:playlist])
         format.html { redirect_to @playlist, notice: 'Playlist was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @playlist.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -100,7 +95,6 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to playlists_url }
-      format.json { head :ok }
     end
   end
 

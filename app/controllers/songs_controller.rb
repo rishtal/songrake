@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_filter :authenticate_user!
+  
   # GET /songs
   # GET /songs.json
   def index
@@ -8,7 +8,6 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @songs }
     end
   end
 
@@ -19,7 +18,6 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @song }
     end
   end
 
@@ -30,7 +28,6 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @song }
     end
   end
 
@@ -48,10 +45,8 @@ class SongsController < ApplicationController
     respond_to do |format|
       if @song.save
         format.html { redirect_to playlist_path(@song.playlist_id), notice: 'Song was successfully created.' }
-        format.json { render json: @song, status: :created, location: @song }
       else
         format.html { redirect_to playlist_path(params[:song][:playlist_id]), notice: 'Song has already been added.'}
-        format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,10 +59,8 @@ class SongsController < ApplicationController
     respond_to do |format|
       if @song.update_attributes(params[:song])
         format.html { redirect_to @song, notice: 'Song was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,7 +73,6 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to songs_url }
-      format.json { head :ok }
     end
   end
 end
