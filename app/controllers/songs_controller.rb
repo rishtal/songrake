@@ -73,6 +73,7 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to songs_url }
+
     end
   end
 end

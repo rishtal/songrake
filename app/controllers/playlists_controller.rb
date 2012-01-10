@@ -18,14 +18,15 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @song = Song.new
 
-    creator_array = @playlist.roles.where(:role => "Creator")
+
+    creator_array = @playlist.playlist_roles.where(:role => "Creator")
     if creator_array.size == 1
       @creator = creator_array[0].user
     else
       @creator = nil
     end
 
-    members_roles = @playlist.roles.where(:role => "Member")
+    members_roles = @playlist.playlist_roles.where(:role => "Member")
     @members = Array.new
     members_roles.each { |r| @members << r.user }
 
@@ -56,7 +57,7 @@ class PlaylistsController < ApplicationController
     error = true
     @playlist = Playlist.new(params[:playlist])
     if @playlist.save
-      @role = @playlist.roles.build(:playlist_id => @playlist.id,
+      @role = @playlist.playlist_roles.build(:playlist_id => @playlist.id,
                                     :user_id => current_user.id,
                                     :role => "Creator")
       if @role.save
@@ -100,7 +101,7 @@ class PlaylistsController < ApplicationController
 
   def join
     @playlist = Playlist.find(params[:playlist_id])
-    @role = Role.join_playlist_as_member(@playlist.id, current_user.id)
+    @role = PlaylistRole.join_playlist_as_member(@playlist.id, current_user.id)
     respond_to do |format|
       if @role.save
         format.html { redirect_to playlist_path(@playlist.id), notice: "Successfully added to playlist"}

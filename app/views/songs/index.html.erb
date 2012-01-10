@@ -1,7 +1,4 @@
 <div id="song_app">
-
-<%= render 'form' %>
-
 <hr/>
 <h1>List of Song Requests</h1>
 
@@ -18,9 +15,9 @@
   <tr>
     <td><%= song.title %></td>
     <td><%= song.artist %></td>
-    <!--<td><%= link_to 'Show', song %></td>
+    <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
-    <td><%= link_to 'Destroy', song, confirm: 'Are you sure?', method: :delete %></td>-->
+    <td><%= link_to 'Destroy', song, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -5,12 +5,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role
 
-  has_many :roles
-  has_many :playlists, :through => :roles
+  has_many :playlist_roles
+  has_many :playlists, :through => :playlist_roles
   has_many :songs
 
-  validates :username, :uniqueness => true, :length => {:in => 5..20}
+  ROLE = ["User", "Admin"]
   
+  validates :username, :uniqueness => true, :length => {:in => 5..20}
+  validates :role, :presence => true, :inclusion => ROLE
+
+
+
 end

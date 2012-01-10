@@ -4,7 +4,7 @@ Songrake::Application.routes.draw do
   get 'about' => "home#about"
   get 'status' => "home#status"
 
-  devise_for :users, :path_prefix => 'd'
+  devise_for :users, :path_prefix => 'd', :controllers => {:registrations => "registrations"}
   match "users/:id" => "users#show", :as => :user_profile
 
   resources :playlists

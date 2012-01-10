@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence(:username) {|n| "username#{n}"}
     password "myTestPassword"
     password_confirmation "myTestPassword"
+    role "User"
   end
 
   factory :playlist do
@@ -18,7 +19,7 @@ FactoryGirl.define do
     association :requester, :factory => :user
   end
 
-  factory :role do
+  factory :playlist_role do
     association :playlist
     association :user
     role "Member"

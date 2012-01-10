@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @creator_roles = @user.roles.where(:role => "Creator")
+    @creator_roles = @user.playlist_roles.where(:role => "Creator")
     @created_playlists = Array.new
     @creator_roles.each { |r| @created_playlists << r.playlist }
 
-    @member_roles = @user.roles.where(:role => "Member")
+    @member_roles = @user.playlist_roles.where(:role => "Member")
     @joined_playlists = Array.new
     @member_roles.each { |r| @joined_playlists << r.playlist }
 
