@@ -12,10 +12,12 @@
   </div>
 </div>
 
+<% if playlist_member_or_creator? %>
 <br><br>
 <h3>Submit a song</h3>
 <br>
-<%= render "songs/form" %>
+  <%= render "songs/form" %>
+<% end %>
 
 <br><br>
 <h3>Song list</h3>

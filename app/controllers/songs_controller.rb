@@ -44,6 +44,11 @@ class SongsController < SongRakeController
     @song = Song.new(params[:song])
     @song.requester = current_user
 
+    if !PlaylistRole.playlist_member_or_creator?(@song.playlist_id, current_user)
+      redirect_to playlist_path(@song.playlist_id), notice: 'Must join playlist before you can add a song'
+      return
+    end
+
     respond_to do |format|
       if @song.save
         format.html { redirect_to playlist_path(@song.playlist_id), notice: 'Song was successfully created.' }

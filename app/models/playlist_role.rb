@@ -13,4 +13,9 @@ class PlaylistRole < ActiveRecord::Base
   def self.join_playlist_as_member(playlist_id, user_id)
     PlaylistRole.new(:playlist_id => playlist_id, :user_id => user_id, :role => "Member")
   end
+
+  def self.playlist_member_or_creator?(playlist_id, user_id)
+    @roles = PlaylistRole.where(:playlist_id =>  playlist_id, :user_id => user_id)
+    return @roles.size > 0
+  end
 end

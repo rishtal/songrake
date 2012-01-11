@@ -105,7 +105,7 @@ class PlaylistsController < SongRakeController
     @role = PlaylistRole.join_playlist_as_member(@playlist.id, current_user.id)
     respond_to do |format|
       if @role.save
-        format.html { redirect_to playlist_path(@playlist.id), notice: "Successfully added to playlist"}
+        format.html { redirect_to playlist_path(@playlist.id), notice: "Successfully joined playlist"}
       else
         format. html { redirect_to playlist_path(@playlist.id), notice: "You are already a member of this playlist"}
       end
