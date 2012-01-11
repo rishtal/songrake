@@ -13,8 +13,12 @@
   <% end %>
 
   <%= f.input :title, :label => 'Song Name'%>
-  <%= f.input :artist, :label => 'Artist'%>
-  <%= f.hidden_field :playlist_id, :value => @playlist.id %>
+  <%= f.input :artist, :label => 'artist'%>
+  <% if @playlist %>
+    <%= f.hidden_field :playlist_id, :value => @playlist.id %>
+  <% else %>
+    <%= f.input :playlist_id, :label => 'playlist id' %>
+  <% end %>
   <%= f.button :submit, 'Add Song Request', :class => "btn"%>
 <% end %>
 
