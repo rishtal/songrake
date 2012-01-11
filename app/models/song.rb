@@ -1,4 +1,6 @@
 class Song < ActiveRecord::Base
+  acts_as_voteable
+
   belongs_to :requester, :class_name => "User"
   belongs_to :playlist
 

@@ -1,6 +1,6 @@
 class SongsController < SongRakeController
   skip_before_filter :authenticate_user!, :only => [] #none, have to sign in for any action
-  skip_before_filter :authenticate_admin, :only => [:create]
+  skip_before_filter :authenticate_admin, :only => [:create, :upvote, :downvote]
 
   # GET /songs
   # GET /songs.json
@@ -82,5 +82,29 @@ class SongsController < SongRakeController
       format.html { redirect_to songs_url }
 
     end
+  end
+
+  def upvote
+    @song = Song.find(params[:id])
+
+    if current_user.voted_for?(@song)
+      redirect_to :back, notice: "You have already voted on this song"
+      return
+    end
+
+    current_user.vote_for(@song)
+    redirect_to :back, notice: "Thanks for your vote!"
+  end
+
+  def downvote
+    @song = Song.find(params[:id])
+
+    if current_user.voted_for?(@song)
+      redirect_to :back, notice: "You have already voted on this song"
+      return
+    end
+
+    current_user.vote_against(@song)
+    redirect_to :back, notice: "Thanks for your vote!"
   end
 end

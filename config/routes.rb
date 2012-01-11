@@ -9,8 +9,11 @@ Songrake::Application.routes.draw do
 
   resources :playlists
   post "playlists/join"
-  resources :songs
 
+  resources :songs
+  post "songs/upvote"
+  post "songs/downvote"
+  
   #when you login or sign-up you will be directed to songs/index
   #match '/user' => "songs#index", :as => :user_root
 

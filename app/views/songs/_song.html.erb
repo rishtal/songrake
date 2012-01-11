@@ -1,0 +1,21 @@
+<tr>
+  <td><%= song.title %></td>
+  <td><%= song.artist %></td>
+  <td><%= song.votes_for %></td>
+  <td>
+    <%= form_tag :controller => "songs", :action => "upvote" do %>
+      <%= hidden_field_tag "id", song.id %>
+      <%= submit_tag "Up", :class => "btn" %>
+    <% end %>
+  </td>
+  <td><%= song.votes_against %></td>
+  <td>
+    <%= form_tag :controller => "songs", :action => "downvote" do %>
+      <%= hidden_field_tag "id", song.id %>
+      <%= submit_tag "Down", :class => "btn" %>
+    <% end %>
+  </td>
+  <td>
+    <%= current_user.karma%>
+  </td>
+</tr>

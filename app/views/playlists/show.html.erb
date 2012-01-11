@@ -30,12 +30,7 @@
     </tr>
   </thead>
   <tbody>
-<% @playlist.songs.each do |song| %>
-  <tr>
-    <td><%= song.title %></td>
-    <td><%= song.artist %></td>
-  </tr>
-<% end %>
+  <%= render @playlist.songs %>
   </tbody>
 </table>
 
