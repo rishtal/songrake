@@ -16,6 +16,4 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true, :length => {:in => 5..20}
   validates :role, :presence => true, :inclusion => ROLE
 
-
-
 end

@@ -1,5 +1,6 @@
-class PlaylistsController < ApplicationController
+class PlaylistsController < SongRakeController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
+  skip_before_filter :authenticate_admin, :only => [:index, :show, :new, :edit, :update, :create, :join]
 
   # GET /playlists
   # GET /playlists.json
