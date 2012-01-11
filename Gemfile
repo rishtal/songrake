@@ -7,7 +7,6 @@ gem 'rails', '3.1.3'
 
 gem 'devise'
 gem 'simple_form'
-gem 'cancan'
 
 group :production, :staging do
   gem "pg"
