@@ -8,6 +8,8 @@ gem 'rails', '3.1.3'
 gem 'devise'
 gem 'simple_form'
 gem 'thumbs_up'
+#gem 'css-bootstrap-rails'
+gem 'bootstrap-sass', '~> 1.4.3'
 
 group :production, :staging do
   gem "pg"
@@ -16,8 +18,6 @@ end
 group :development, :test do
   gem "sqlite3-ruby", "~> 1.3.0", :require => "sqlite3"
 end
-
-gem 'css-bootstrap-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
