@@ -1,3 +1,12 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$signup_margin: 305px;
+
+#signup_header {
+  margin-left: $signup_margin;
+}
+
+#singup_button {
+  margin-left: $signup_margin;
+}

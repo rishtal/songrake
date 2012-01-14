@@ -17,17 +17,15 @@
           </ol>
         </h4>
       </div>
-      <div class="span6">
-        <div id="grabber" style="margin-left: 200px">
-          <h3>Sign up!</h3>
-        </div>
+      <div class="span10">
+        <h3 id="signup_header">Sign up!</h3>
         <div id="signup">
           <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
             <%= f.input :username %>
             <%= f.input :email %>
             <%= f.input :password %>
             <%= f.input :password_confirmation %>
-            <div style="float: right"><%= f.button :submit, :class => "btn"%></div>
+            <div><%= f.button :submit, :class => "btn", :id => "singup_button"%></div>
           <% end %>
         </div>
       </div>

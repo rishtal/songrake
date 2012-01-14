@@ -14,7 +14,6 @@
       <a class="brand" href="/">SongRake</a>
       <ul class="nav">
         <li><%= link_to "Playlists", playlists_url %></li>
-        <li><a href="/about">About</a></li>
       </ul>
       <form action="" class="pull-right">
 
@@ -34,6 +33,14 @@
 <div class="container">
   <div class="content">
     <%= yield %>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <%= link_to "About", :controller => :home, :action => :about %>
+    </div>
   </div>
 </div>
 

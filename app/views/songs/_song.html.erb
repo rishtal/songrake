@@ -2,6 +2,7 @@
   <td><%= song.title %></td>
   <td><%= song.artist %></td>
   <td><%= song.votes_for %></td>
+  <td><%= song.requester.username %></td>
   <td>
     <%= form_tag :controller => "songs", :action => "upvote" do %>
       <%= hidden_field_tag "id", song.id %>
