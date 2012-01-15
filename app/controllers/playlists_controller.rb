@@ -18,14 +18,7 @@ class PlaylistsController < SongRakeController
   def show
     @playlist = Playlist.find(params[:id])
     @song = Song.new
-
-
-    creator_array = @playlist.playlist_roles.where(:role => "Creator")
-    if creator_array.size == 1
-      @creator = creator_array[0].user
-    else
-      @creator = nil
-    end
+    @creator = @playlist.creator
 
     members_roles = @playlist.playlist_roles.where(:role => "Member")
     @members = Array.new

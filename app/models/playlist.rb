@@ -12,4 +12,13 @@ class Playlist < ActiveRecord::Base
   validates :description, :length => {:maximum => 1000}
 
   validates :playlist_type, :inclusion => LIST_TYPE
+
+  def creator
+    creator_array = self.playlist_roles.where(:role => "Creator")
+    if creator_array.size == 1
+      return creator_array[0].user
+    else
+      return nil
+    end
+  end
 end

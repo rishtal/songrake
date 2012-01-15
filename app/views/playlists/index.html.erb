@@ -1,10 +1,11 @@
-<h1>Listing playlists</h1>
+<h1>Playlists</h1>
 
 <table>
   <thead>
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Creator</th>
     <th></th>
   </tr>
   </thead>
@@ -13,10 +14,11 @@
     <tr>
       <td><%= playlist.name %></td>
       <td><%= playlist.description %></td>
+      <td><%= playlist.creator.username %></td>
       <td>
         <%= form_tag :controller => "playlists", :action => "join" do %>
           <%= hidden_field_tag "playlist_id", playlist.id %>
-          <%= submit_tag "Join Playlist", :class => "btn"%>
+          <%= submit_tag "Join Playlist", :class => "btn primary"%>
         <% end %>
       </td>
       <td><%= link_to 'Details', playlist %></td>
