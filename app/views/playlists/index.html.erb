@@ -13,7 +13,13 @@
     <tr>
       <td><%= playlist.name %></td>
       <td><%= playlist.description %></td>
-      <td><%= link_to 'Show', playlist %></td>
+      <td>
+        <%= form_tag :controller => "playlists", :action => "join" do %>
+          <%= hidden_field_tag "playlist_id", playlist.id %>
+          <%= submit_tag "Join Playlist", :class => "btn"%>
+        <% end %>
+      </td>
+      <td><%= link_to 'Details', playlist %></td>
     </tr>
   <% end %>
   </tbody>
