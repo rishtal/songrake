@@ -15,7 +15,7 @@
       <ul class="nav">
         <li><%= link_to "Playlists", playlists_url %></li>
       </ul>
-      <form action="" class="pull-right">
+      <div id="user-login" class="pull-right">
 
         <% if user_signed_in? %>
           Signed in as <%= current_user.email %>. Not you?
@@ -24,7 +24,7 @@
         <% else %>
           <%= link_to('Login', new_user_session_path)  %>
         <% end %>
-      </form>
+      </div>
     </div>
   </div>
 </div>

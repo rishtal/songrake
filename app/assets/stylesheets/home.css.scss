@@ -1,12 +1,66 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$signup_margin: 305px;
 
-#signup_header {
-  margin-left: $signup_margin;
+section {
+  border-bottom: 1px solid #DDD;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
-#singup_button {
-  margin-left: $signup_margin;
+.home-title {
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 50px;
+  padding-bottom: 50px;
+}
+
+#header-section {
+  text-align: center;
+  
+  #songrake-header {
+    #songrake-title {
+      font-size: 100px;
+      font-weight: bold;
+      line-height: 100px;
+    }
+  }
+}
+
+#about-section {
+  #about-list {
+    font-size: 20px;
+
+    li {
+      line-height: 30px;
+    }
+  }
+}
+
+#signup-section {
+  form .input {
+    margin-left: 0px
+  }
+
+  label {
+    width: 230px;
+    font-size: 20px;
+  }
+
+  #signup-button {
+    margin-left: 250px;
+    margin-top: 20px;
+  }
+}
+
+#playlists-section {
+  table {
+    width: 550px;
+    table-layout: fixed;
+
+    .name-col {
+      width: 150px;
+    }
+  }
+  border-bottom: 0px;
 }

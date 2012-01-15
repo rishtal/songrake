@@ -2,33 +2,82 @@
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
 
-<div class="row">
-  <div class="span16">
-    <div class="row">
-      <div class="span6">
-        <h2>Welcome to SongRake!</h2>
+<section id="header-section">
+  <header id="songrake-header">
+    <h1 id="songrake-title">SongRake</h1>
+    <h3>Create playlists with your friends</h3>
+  </header>
+</section>
 
-        <h4>
+<section id="about-section">
+  <div class="row">
+    <div class="span12 offset4">
+      <div class="row">
+        <div class="home-title">
+          About
+        </div>
+      </div>
+      <div class="row">
+        <div id="about-list">
           <ol>
             <li>Add songs to request list</li>
             <li>Fast & Efficient</li>
             <li>Make hour holiday party a breeze & fun</li>
             <li>Keep your DJ in the know</li>
           </ol>
-        </h4>
+        </div>
       </div>
-      <div class="span10">
-        <h3 id="signup_header">Sign up!</h3>
+    </div>
+  </div>
+</section>
+
+<section id="signup-section">
+  <div class="row">
+    <div class="span12 offset4">
+      <div class="row">
+        <div class="home-title">Sign up</div>
+      </div>
+      <div class="row">
         <div id="signup">
           <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
             <%= f.input :username %>
             <%= f.input :email %>
             <%= f.input :password %>
             <%= f.input :password_confirmation %>
-            <div><%= f.button :submit, :class => "btn", :id => "singup_button"%></div>
+            <div><%= f.button :submit, :class => "btn", :id => "signup-button"%></div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<section id="playlists-section">
+  <div class="row">
+    <div class="span12 offset4">
+      <div class="row">
+        <div class="home-title">Playlists</div>
+      </div>
+      <div class="row">
+        <table>
+          <thead>
+          <tr>
+            <th class="name-col">Name</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @playlists.each do |playlist| %>
+            <tr>
+              <td class="name-col"><%= playlist.name %></td>
+              <td><%= playlist.description %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
