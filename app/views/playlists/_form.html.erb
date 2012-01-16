@@ -4,10 +4,9 @@
   <div class="inputs">
     <%= f.input :name %>
     <%= f.input :description, :input_html => {:rows => 3} %>
-    <%= f.input :playlist_type, :collection => Playlist::LIST_TYPE, :prompt => "Select..." %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn primary" %>
   </div>
 <% end %>

@@ -50,6 +50,8 @@ class PlaylistsController < SongRakeController
 
     error = true
     @playlist = Playlist.new(params[:playlist])
+    @playlist.playlist_type = "Listed"
+    
     if @playlist.save
       @role = @playlist.playlist_roles.build(:playlist_id => @playlist.id,
                                     :user_id => current_user.id,
