@@ -13,6 +13,8 @@ class UsersController < SongRakeController
     @joined_playlists = Array.new
     member_roles.each { |r| @joined_playlists << r.playlist }
 
+    @playlist = Playlist.new
+
     respond_to do |format|
       format.html
     end

@@ -7,7 +7,7 @@
     <%= f.input :playlist_type, :collection => Playlist::LIST_TYPE, :prompt => "Select..." %>
   </div>
 
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
+ 	<div class="modal-footer">
+	    	<%= f.button :submit, :class => "btn primary" %>
+  	</div>
 <% end %>
