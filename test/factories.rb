@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :playlist do
     sequence(:name) {|n| "playlist#{n}"}
-    playlist_type "Unlisted"
+    playlist_type "Listed"
   end
 
   factory :song do
