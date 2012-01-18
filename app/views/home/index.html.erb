@@ -1,6 +1,4 @@
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-<% end %>
+<%= render "flash_messages/notice" %>
 
 <section id="header-section">
   <header id="songrake-header">

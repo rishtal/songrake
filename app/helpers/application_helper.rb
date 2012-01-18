@@ -15,5 +15,4 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
   #End Display Custom SignIn
-
 end
