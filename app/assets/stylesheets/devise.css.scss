@@ -1,0 +1,40 @@
+//Place css related to the views associated with devise
+//e.g. session and registration.
+
+.registrations, .sessions, .passwords {
+  
+  .home-title {
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 50px;
+    padding-bottom: 50px;
+  }
+
+  #header-section {
+    text-align: center;
+
+    #songrake-header {
+      #songrake-title {
+        font-size: 100px;
+        font-weight: bold;
+        line-height: 100px;
+      }
+    }
+  }
+
+  section {
+    form .input {
+      margin-left: 0px
+    }
+
+    label {
+      width: 230px;
+      font-size: 20px;
+    }
+
+    #button {
+      margin-left: 250px;
+      margin-top: 20px;
+    }
+  }
+}

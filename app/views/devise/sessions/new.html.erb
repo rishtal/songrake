@@ -1,24 +1,45 @@
 <%= render "flash_messages/notice" %>
 
-<h2>Sign in</h2>
+<section>
+  <div class="row">
+    <div class="span12 offset4">
+      <div class="row">
+        <div class="home-title">Sign in</div>
+      </div>
+      <div class="row">
+        <div id="form">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <%= form_for(resource, :as => resource_name,
+                       :url => session_path(resource_name),
+                       :html => {:class => "simple_form" }) do |f| %>
 
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+            <div class="input">
+              <%= f.label :email %>
+              <%= f.email_field :email %>
+            </div>
+            
+            <div class="input">
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="input">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+
+            <div>
+              <%= f.submit "Sign in", :class => "btn primary", :id =>"button" %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+</section>
 
 <%= render :partial => "devise/shared/links" %>
 
