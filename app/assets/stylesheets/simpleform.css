@@ -8,9 +8,9 @@
 
 label.text.optional{
   float: left;
-  width: 200px;
-  text-align: right;
-  margin: 0px 10px 20px -100px;
+  width: 135px;
+  text-align: left;
+  margin: 0px 20px 0px 0px;
 }
 
 .simple_form div.input {

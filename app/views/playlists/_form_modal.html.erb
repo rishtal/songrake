@@ -1,7 +1,7 @@
 <div id="playlist_form_modal" class="modal hide fade" style="display: block; ">
   <div class="modal-header">
     <a href="#" class="close">×</a>
-    <h3>Create new SongRake</h3>
+    <h1>Create a new SongRake</h1>
   </div>
   <%= simple_form_for(playlist) do |f| %>
     <%= f.error_notification %>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="modal-footer">
-      <%= f.button :submit, :class => "btn primary" %>
+      <%= f.submit "Create!", :class => "btn primary" %>
     </div>
   <% end %>
 </div>
