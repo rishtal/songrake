@@ -1,31 +1,18 @@
 <h1>All Rakes</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Creator</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @playlists.each do |playlist| %>
-    <tr>
-      <td><%= playlist.name %></td>
-      <td><%= playlist.description %></td>
-      <td><%= playlist.creator.username %></td>
-      <td>
-        <%= form_tag :controller => "playlists", :action => "join" do %>
-          <%= hidden_field_tag "playlist_id", playlist.id %>
-          <%= submit_tag "Join Rake", :class => "btn primary"%>
-        <% end %>
-      </td>
-      <td><%= link_to 'Details', playlist %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="span12 offset2">
+    <table>
+      <tbody>
+      <% @playlists.each do |playlist| %>
+        <tr>
+          <%= render :partial => "playlist", :locals => {:playlist => playlist} %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= render "new_user_modal" %>
 

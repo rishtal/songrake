@@ -48,3 +48,30 @@
     margin: 0px;
   }
 }
+
+.playlist-list-item {
+
+  height: 150px;
+
+  form {
+    margin-bottom: 0px;
+  }
+  .btn {
+    margin-top: 4px;
+  }
+
+  .list-item-body {
+    margin-bottom: 50px;
+    font-size: 20px;
+
+    .no-description {
+      color: gray;
+      font-style: italic;
+    }
+
+    .songs-rakers {
+      color: gray;
+      font-size: 16px;
+    }
+  }
+}

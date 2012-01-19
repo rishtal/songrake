@@ -1,0 +1,33 @@
+<div class= "playlist-list-item">
+  <div class="page-header">
+    <div class="row">
+      <div class="span9">
+        <h1>
+          <%= link_to "#{playlist.name}", playlist %>
+          <small>by <%= link_to "#{playlist.creator.username}", user_profile_path(playlist.creator.id)  %></small>
+        </h1>
+      </div>
+      <div class="span3">
+        <%= form_tag :controller => "playlists", :action => "join" do %>
+          <%= hidden_field_tag "playlist_id", playlist.id %>
+          <%= submit_tag "Join Rake", :class => "btn primary"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="list-item-body">
+    <div class="row">
+      <div class="span9">
+        <% if playlist.description != "" %>
+          <%= playlist.description %>
+        <% else %>
+          <div class="no-description">No description.</div>
+        <% end %>
+      </div>
+      <div class="songs-rakers span3">
+        <%= playlist.song_count %> Songs | 
+        <%= playlist.user_count %> Rakers
+      </div>
+    </div>
+  </div>
+</div>

@@ -21,4 +21,13 @@ class Playlist < ActiveRecord::Base
       return nil
     end
   end
+
+  def user_count
+    return self.playlist_roles.length
+  end
+
+  def song_count
+    return self.songs.length
+  end
+
 end
