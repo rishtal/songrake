@@ -4,14 +4,7 @@ class UsersController < SongRakeController
   
   def show
     @user = User.find(params[:id])
-
-    creator_roles = @user.playlist_roles.where(:role => "Creator")
-    @created_playlists = Array.new
-    creator_roles.each { |r| @created_playlists << r.playlist }
-
-    member_roles = @user.playlist_roles.where(:role => "Member")
-    @joined_playlists = Array.new
-    member_roles.each { |r| @joined_playlists << r.playlist }
+    @playlists = @user.playlists
 
     respond_to do |format|
       format.html

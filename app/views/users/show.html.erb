@@ -1,65 +1,29 @@
 <%= render "flash_messages/notice" %>
 
 <div class="row">
+  <div class="span12 offset4 title">
+    My Rakes
+  </div>
+</div>
+
+<div class="row">
   <div class="span4">
     <div class="sidebar">
-      <div class="row">
-          <div class="span4"><b>Username:</b>&nbsp;&nbsp;<%= @user.username %></div>
-      </div>
-      <div class="row">
-          <div class="span4"><b>Email:</b>&nbsp;&nbsp;<%= @user.email %></div>
-      </div>
-      <div class="row">
-          <div class="span4"><b>Karma:</b>&nbsp;&nbsp;<%= @user.karma %></div>
-      </div>
+      <div class="row"><div class="span4"><h1>Me</h1></div></div>
+      <div class="row"><div class="span4"><b>Username:</b>&nbsp;&nbsp;<%= @user.username %></div></div>
+      <div class="row"><div class="span4"><b>Email:</b>&nbsp;&nbsp;<%= @user.email %></div></div>
+      <div class="row"><div class="span4"><b>Karma:</b>&nbsp;&nbsp;<%= @user.karma %></div></div>
     </div>
   </div>
-  <div class="span9">
-    <ul class="tabs" data-tabs="tabs">
-      <li class="active"><a href="#myplaylist">My Rakes</a></li>
-      <li><a href="#joinedplaylist">Joined Rakes</a></li>
-    </ul>
-      <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane active" id="myplaylist">
-            <% if show_created_playlists %>
-              <table>
-                <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% @created_playlists.each do |playlist| %>
-                  <tr>
-                    <td><%= playlist.name %></td>
-                    <td><%= playlist.description %></td>
-                    <td><%= link_to "show", playlist_path(playlist.id) %></td>
-                  </tr>
-                <% end %>
-                </tbody>
-              </table>
-            <% end %>
-        </div>
-        <div class="tab-pane" id="joinedplaylist">
-            <% if show_joined_playlists %>
-              <table>
-                <thead>
-                <tr>
-                  <th>Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% @joined_playlists.each do |playlist| %>
-                  <tr>
-                    <td><%= playlist.name %></td>
-                    <td><%= link_to "show", playlist_path(playlist.id) %></td>
-                  </tr>
-                <% end %>
-                </tbody>
-              </table>
-            <% end %>
-        </div>
-    </div>
+  <div class="span12">
+    <table>
+      <tbody>
+      <% @playlists.each do |playlist| %>
+        <tr>
+          <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "user#show"} %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

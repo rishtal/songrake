@@ -1,4 +1,8 @@
-<h1>All Rakes</h1>
+<div class="row">
+  <div class="span12 offset2">
+    <div class="title">All Rakes</div>
+  </div>
+</div>
 
 <div class="row">
   <div class="span12 offset2">
@@ -6,7 +10,7 @@
       <tbody>
       <% @playlists.each do |playlist| %>
         <tr>
-          <%= render :partial => "playlist", :locals => {:playlist => playlist} %>
+          <%= render :partial => "playlist", :locals => {:playlist => playlist, :view=> "playlists#show"} %>
         </tr>
       <% end %>
       </tbody>

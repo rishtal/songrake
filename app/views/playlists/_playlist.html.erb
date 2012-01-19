@@ -7,12 +7,14 @@
           <small>by <%= link_to "#{playlist.creator.username}", user_profile_path(playlist.creator.id)  %></small>
         </h1>
       </div>
-      <div class="span3">
-        <%= form_tag :controller => "playlists", :action => "join" do %>
-          <%= hidden_field_tag "playlist_id", playlist.id %>
-          <%= submit_tag "Join Rake", :class => "btn primary"%>
-        <% end %>
-      </div>
+      <% if view != "user#show" %>
+        <div class="span3">
+          <%= form_tag :controller => "playlists", :action => "join" do %>
+            <%= hidden_field_tag "playlist_id", playlist.id %>
+            <%= submit_tag "Join Rake", :class => "btn primary"%>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="list-item-body">
