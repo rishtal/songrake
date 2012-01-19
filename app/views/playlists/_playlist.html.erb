@@ -9,9 +9,18 @@
       </div>
       <% if view != "user#show" %>
         <div class="span3">
+
+
           <%= form_tag :controller => "playlists", :action => "join" do %>
             <%= hidden_field_tag "playlist_id", playlist.id %>
-            <%= submit_tag "Join Rake", :class => "btn primary"%>
+            
+            <!-- Popover. Need to add $("a[rel=popover]").popover(); into parent html file for it to work-->
+            <a href="#"
+               rel="popover"
+               data-original-title="Why would I join a Rake?"
+               data-content="Join a Rake to add and vote on songs! ">
+              <%= submit_tag "Join Rake", :class => "btn primary" %>
+            </a>
           <% end %>
         </div>
       <% end %>
