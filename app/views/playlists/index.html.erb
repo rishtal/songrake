@@ -1,10 +1,4 @@
-<div class="row">
-  <div class="span4"><h1>Playlists</h1></div>
-  <div class="span4 offset8">
-    <%= link_to "Create Playlist", new_playlist_path, :class => "btn primary create-btn"%>
-  </div>
-</div>
-
+<h1>Playlists</h1>
 
 <table>
   <thead>
@@ -33,3 +27,28 @@
   </tbody>
 </table>
 
+<%= render "new_user_modal" %>
+
+<%= render "form_modal" %>
+
+<% if flash[:new_user] %>
+  <script type="text/javascript">
+    $('#new-user-modal').modal({
+      backdrop: "static"
+    })
+    $('#new-user-modal').modal('show')
+
+    $('#browse-btn').click(function() {
+      $('#new-user-modal').modal('hide')
+    })
+
+    $('#create-btn').click(function() {
+      $('#new-user-modal').modal('hide')
+      
+      $('#playlist_form_modal').modal({
+        backdrop: "static"
+      })
+      $('#playlist_form_modal').modal('show')
+    })
+  </script>
+<% end %>

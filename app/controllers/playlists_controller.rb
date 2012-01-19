@@ -7,6 +7,7 @@ class PlaylistsController < SongRakeController
   def index
     #only show listed playlist. Don't show unlisted playlists
     @playlists = Playlist.find_all_by_playlist_type("Listed")
+    @playlist = Playlist.new
 
     respond_to do |format|
       format.html # index.html.erb

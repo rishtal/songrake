@@ -2,7 +2,10 @@
 
 <br><br>
 <div class="create_playlist">
-    <button data-controls-modal="modal-from-dom" data-backdrop="true" data-keyboard="true" class="btn large primary">Create New Playlist</button>
+    <button data-controls-modal="playlist_form_modal"
+            data-backdrop="true"
+            data-keyboard="true"
+            class="btn large primary">Create New Playlist</button>
 </div>
 <div class="row">
   <div class="span4">
@@ -67,18 +70,5 @@
     </div>
   </div>
 </div>
-<div id="modal-from-dom" class="modal hide fade" style="display: none; ">
-            <div class="modal-header">
-              <a href="#" class="close">×</a>
-              <h3>Creat New Playlist</h3>
-            </div>
-            <div class="modal-body">
-                <%= render "playlists/form" %>
-            </div>
-            <!--
-            <div class="modal-footer">
-              <a href="#" class="btn primary">Primary</a>
-              <a href="#" class="btn secondary">Secondary</a>
-            </div>
-            -->
-</div>
+
+<%= render "playlists/form_modal" %>

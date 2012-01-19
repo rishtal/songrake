@@ -8,4 +8,24 @@
     float: right;
   }
 
+
+  #new-user-modal {
+
+    .modal-header {
+      h1 {
+        margin-top: 18px;
+      }
+    }
+
+    .modal-body {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+}
+
+#playlist_form_modal {
+  form {
+    margin: 0px;
+  }
 }

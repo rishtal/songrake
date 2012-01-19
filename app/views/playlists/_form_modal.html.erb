@@ -1,0 +1,21 @@
+<div id="playlist_form_modal" class="modal hide fade" style="display: block; ">
+  <div class="modal-header">
+    <a href="#" class="close">×</a>
+    <h3>Create new SongRake</h3>
+  </div>
+  <%= simple_form_for(@playlist) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="modal-body">
+      <div class="inputs">
+        <%= f.input :name %>
+        <%= f.input :description, :input_html => {:rows => 3} %>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <%= f.button :submit, :class => "btn primary" %>
+    </div>
+  <% end %>
+</div>
+
