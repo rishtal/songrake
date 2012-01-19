@@ -7,7 +7,7 @@ class Playlist < ActiveRecord::Base
   LIST_TYPE = ["Listed", "Unlisted"]
 
   validates :name, :presence => true,
-                    :length => { :maximum => 100}
+                    :length => {:maximum => 100}
   
   validates :description, :length => {:maximum => 1000}
 

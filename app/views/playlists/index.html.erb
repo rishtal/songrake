@@ -29,9 +29,12 @@
 
 <%= render "new_user_modal" %>
 
-<%= render "form_modal" %>
+<!--
+Do not need to have a "render form_modal" because we inherit one from
+layouts/application.html.erb
+-->
 
-<% if flash[:new_user] %>
+<%# if flash[:new_user] %>
   <script type="text/javascript">
     $('#new-user-modal').modal({
       backdrop: "static"
@@ -51,4 +54,4 @@
       $('#playlist_form_modal').modal('show')
     })
   </script>
-<% end %>
+<%# end %>

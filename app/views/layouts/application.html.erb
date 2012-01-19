@@ -14,7 +14,12 @@
       <a class="brand" href="/">SongRake</a>
       <ul class="nav">
         <li><%= link_to "Browse Playlists", playlists_url %></li>
-        <li><%= link_to "Create Playlist", new_playlist_url %></li>
+        <li>
+          <a href="#"
+             data-controls-modal="playlist_form_modal"
+             data-backdrop="true"
+             data-keyboard="true">Create Playlist</a>
+        </li>
       </ul>
       <div id="user-login" class="pull-right">
 
@@ -44,6 +49,8 @@
     </div>
   </div>
 </div>
+
+<%= render :partial => "playlists/form_modal", :locals => {:playlist => Playlist.new} %>
 
 <script type="text/javascript">
   var _gaq = _gaq || [];

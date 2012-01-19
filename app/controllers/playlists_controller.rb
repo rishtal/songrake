@@ -1,13 +1,12 @@
 class PlaylistsController < SongRakeController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
-  skip_before_filter :authenticate_admin, :only => [:index, :show, :new, :edit, :update, :create, :join]
+  skip_before_filter :authenticate_admin, :only => [:index, :show, :new, :create, :join]
 
   # GET /playlists
   # GET /playlists.json
   def index
     #only show listed playlist. Don't show unlisted playlists
     @playlists = Playlist.find_all_by_playlist_type("Listed")
-    @playlist = Playlist.new
 
     respond_to do |format|
       format.html # index.html.erb
