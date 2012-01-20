@@ -1,19 +1,19 @@
 <tr>
-  <td><%= song.title %></td>
-  <td><%= song.artist %></td>
   <td><%= song.votes_for %></td>
-  <td><%= song.requester.username %></td>
   <td>
     <%= form_tag :controller => "songs", :action => "upvote" do %>
       <%= hidden_field_tag "id", song.id %>
-      <%= submit_tag "Up", :class => "btn" %>
+       <%= image_submit_tag("arrow_up.png", :class => 'arrowup') %>
     <% end %>
-  </td>
-  <td><%= song.votes_against %></td>
-  <td>
     <%= form_tag :controller => "songs", :action => "downvote" do %>
-      <%= hidden_field_tag "id", song.id %>
-      <%= submit_tag "Down", :class => "btn" %>
+    <%= hidden_field_tag "id", song.id %>
+      <%= image_submit_tag("arrow_down.png", :class => 'arrowdown') %>
     <% end %>
   </td>
+  <td>
+  </td>
+  <td><%= song.title %></td>
+  <td><%= song.artist %></td>
+  <td><%= song.requester.username %></td>
+
 </tr>
