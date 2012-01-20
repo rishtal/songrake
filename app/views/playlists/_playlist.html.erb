@@ -10,7 +10,7 @@
 
       <% if view == "user#show" && current_user == @user  %>
 
-        <div class="span3 raker-role">
+        <div class="span3 raker-role-join">
             <% if playlist.creator == @user %>
               As Head Raker
             <% else %>
@@ -22,11 +22,11 @@
 
         <% if playlist_member_or_creator?(playlist) %>
 
-          <div class="span3"><div class="btn disabled">Already Joined</div></div>
+          <div class="span3 raker-role-join"><div class="btn disabled">Already Joined</div></div>
 
         <% else %>
 
-          <div class="span3">
+          <div class="span3 raker-role-join">
 
             <%= form_tag :controller => "playlists", :action => "join" do %>
               <%= hidden_field_tag "playlist_id", playlist.id %>
