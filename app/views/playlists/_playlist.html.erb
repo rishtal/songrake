@@ -1,20 +1,51 @@
 <div class= "playlist-list-item">
   <div class="page-header">
-    <div class="row">
+    <div class="row playlist-list-item-header">
       <div class="span9">
         <h1>
           <%= link_to "#{playlist.name}", playlist %>
           <small>by <%= link_to "#{playlist.creator.username}", user_profile_path(playlist.creator.id)  %></small>
         </h1>
       </div>
-      <% if view != "user#show" %>
-        <div class="span3">
-          <%= form_tag :controller => "playlists", :action => "join" do %>
-            <%= hidden_field_tag "playlist_id", playlist.id %>
-            <%= submit_tag "Join Rake", :class => "btn primary"%>
-          <% end %>
-        </div>
+
+      <% if view == "user#show" && current_user == @user  %>
+
+        <div class="span3 raker-role-join">
+            <% if playlist.creator == @user %>
+              As Head Raker
+            <% else %>
+              As Raker
+            <% end %>
+          </div>
+
+      <% else %>
+
+        <% if playlist_member_or_creator?(playlist) %>
+
+          <div class="span3 raker-role-join"><div class="btn disabled">Already Joined</div></div>
+
+        <% else %>
+
+          <div class="span3 raker-role-join">
+
+            <%= form_tag :controller => "playlists", :action => "join" do %>
+              <%= hidden_field_tag "playlist_id", playlist.id %>
+
+              <!-- Popover. Need to add $("a[rel=popover]").popover(); into parent html file for it to work-->
+              <a href="#"
+                 class="join-playlist-btn"
+                 rel="popover"
+                 data-original-title="Why would I join a Rake?"
+                 data-content="Join a Rake to add and vote on songs! ">
+                <%= submit_tag "Join Rake", :class => "btn primary" %>
+              </a>
+            <% end %>
+
+          </div>
+
+        <% end %>
       <% end %>
+
     </div>
   </div>
   <div class="list-item-body">
@@ -27,7 +58,7 @@
         <% end %>
       </div>
       <div class="songs-rakers span3">
-        <%= playlist.song_count %> Songs | 
+        <%= playlist.song_count %> Songs |
         <%= playlist.user_count %> Rakers
       </div>
     </div>

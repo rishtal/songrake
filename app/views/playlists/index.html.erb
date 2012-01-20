@@ -18,6 +18,8 @@
   </div>
 </div>
 
+
+
 <%= render "new_user_modal" %>
 
 <!--
@@ -25,8 +27,16 @@ Do not need to have a "render form_modal" because we inherit one from
 layouts/application.html.erb
 -->
 
-<% if flash[:new_user] %>
-  <script type="text/javascript">
+<script type="text/javascript">
+  $(function () {
+    $(".join-playlist-btn")
+      .popover({
+        offset: 10,
+        placement: "below"
+      });
+  })
+  
+  <% if flash[:new_user] %>
     $('#new-user-modal').modal({
       backdrop: "static"
     })
@@ -38,11 +48,12 @@ layouts/application.html.erb
 
     $('#create-btn').click(function() {
       $('#new-user-modal').modal('hide')
-      
-      $('#playlist_form_modal').modal({
+
+      $('#playlist-form-modal').modal({
         backdrop: "static"
       })
-      $('#playlist_form_modal').modal('show')
+      $('#playlist-form-modal').modal('show')
     })
-  </script>
-<% end %>
+  <% end %>
+</script>
+

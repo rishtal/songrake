@@ -22,7 +22,7 @@
   }
 }
 
-#playlist_form_modal {
+#playlist-form-modal {
 
   .modal-header {
     h1 {
@@ -50,8 +50,11 @@
 }
 
 .playlist-list-item {
+  margin-bottom: 75px;
 
-  height: 150px;
+  .playlist-list-item-header {
+    position: relative;
+  }
 
   form {
     margin-bottom: 0px;
@@ -60,8 +63,16 @@
     margin-top: 4px;
   }
 
+  .raker-role-join {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    color: gray;
+    font-size: 16px;
+    padding-bottom: 12px;
+  }
+
   .list-item-body {
-    margin-bottom: 50px;
     font-size: 20px;
 
     .no-description {

@@ -16,4 +16,31 @@
     -moz-border-radius: 15px;
     border-radius: 15px;
   }
+
+  #karma-count {
+    color: #404040;
+  }
+
+  .rake-header {
+    margin-top: 50px;
+    margin-bottom: 75px;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.496094) 0px 1px 0px 0px;
+    background-color: transparent;
+    border-bottom-color: #DDD;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  }
+
+  .songrake-text {
+    font-size: 20px;
+  }
+
+  .no-rakes-button {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .no-rakes-text {
+    margin-bottom: 50px;
+  }
 }

@@ -26,7 +26,7 @@
         <%= @playlist.user_count %> Rakers
     </div>
     <div class="span10">
-      <% if playlist_member_or_creator? %>
+      <% if playlist_member_or_creator?(@playlist) %>
         <br><br>
         <%= render "songs/form" %>
       <% end %>
@@ -51,13 +51,12 @@
       </div>
     </div>
   </div>
-  <div class="span12">
+  <div class="span10">
     <table class="zebra-striped">
       <thead>
         <tr>
           <th></th>
           <th></th>
-          <th>Rakes</th>
           <th>Song</th>
           <th>Artist</th>
           <th>Raker</th>
