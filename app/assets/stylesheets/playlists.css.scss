@@ -21,9 +21,17 @@
     }
   }
 
+  //Pagination hack to get it to be centered.
+  //https://github.com/twitter/bootstrap/issues/304
   .pagination {
-    margin-left: auto;
-    margin-right: auto;
+
+    text-align: center;
+
+    ul {
+      float: none;
+      display: inline-block;
+      overflow: hidden;
+    }
   }
 }
 
