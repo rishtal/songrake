@@ -19,22 +19,14 @@
 
 <% if @playlists.length > 0 %>
 
-  
-
 <div class="row">
   <div class="span12 offset2">
-    <table>
-      <tbody>
-      <% @playlists.each do |playlist| %>
-        <tr>
-          <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "user#show"} %>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+    <% @playlists.each do |playlist| %>
+      <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "user#show"} %>
+    <% end %>
   </div>
 </div>
-
+  
 <% else %>
 
   <% if current_user == @user %>

@@ -11,12 +11,16 @@
       <% if view == "user#show" && current_user == @user  %>
 
         <div class="span3 raker-role-join">
-            <% if playlist.creator == @user %>
-              As Head Raker
-            <% else %>
-              As Raker
-            <% end %>
-          </div>
+          <% if playlist.creator == @user %>
+            As Head Raker
+          <% else %>
+            As Raker
+          <% end %>
+        </div>
+
+      <% elsif view == "home#index" %>
+
+        <!-- have no div for this section -->
 
       <% else %>
 

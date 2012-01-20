@@ -56,26 +56,13 @@
       <div class="row">
         <div class="home-title">Rakes</div>
       </div>
-      <div class="row">
-        <table>
-          <thead>
-          <tr>
-            <th class="name-col">Name</th>
-            <th>Description</th>
-            <th class="link-col"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @playlists.each do |playlist| %>
-            <tr>
-              <td class="name-col"><%= playlist.name %></td>
-              <td><%= playlist.description %></td>
-              <td class="link-col"><%= link_to "Details", playlist_path(playlist.id) %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12 offset2">
+      <% @playlists.each do |playlist| %>
+        <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "home#index"} %>
+      <% end %>
     </div>
   </div>
 </section>
