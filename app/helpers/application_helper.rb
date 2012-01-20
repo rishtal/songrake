@@ -1,5 +1,7 @@
 module ApplicationHelper
 
+  WillPaginate.per_page = 10
+
   #Begin Display Custom SignIn
   # This section is to enable registration form to be embedded in other pages
   #https://github.com/plataformatec/devise/wiki/How-To:-Display-a-custom-sign_in-form-anywhere-in-your-app

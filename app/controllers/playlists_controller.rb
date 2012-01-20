@@ -6,7 +6,7 @@ class PlaylistsController < SongRakeController
   # GET /playlists.json
   def index
     #only show listed playlist. Don't show unlisted playlists
-    @playlists = Playlist.find_all_by_playlist_type("Listed")
+    @playlists = Playlist.where(:playlist_type => "Listed").paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
