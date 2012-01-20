@@ -6,54 +6,72 @@
 
 }
 
-.addsongs {
-    margin-left: 240px;
-    width: 730px;
-}
+//**** song/_song ********************************
 
-.arrowup {
-  border-style: none;
-  width: 15px;
-  height: 50%;
-}
+@mixin song-cell-base {
+  height:50px;
+  float: left;
 
-.arrowdown {
-  border-style: none;
-  width: 15px;
-  height: 30%;
-}
-
-.voteaction {
-  width: 60px;
-  vertical-align: top;
-}
-
-.votecell {
-  background: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  text-align: center;
-  vertical-align: baseline;
-
-  width: 1px;
-
-  form {
-    margin: 0px;
-    background: 0px;
+  p {
+    font-size:20px;
+    line-height:45px;
   }
 }
 
-.rank {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  text-align: center;
-  vertical-align: baseline;
-  background: none;
-  float: right;
+.song-item {
+
+  height:50px;
+
+  .plusminus-vote {
+    width: 60px;
   }
+
+  .song-item-plusminus {
+    @include song-cell-base;
+    width: 35px;
+    p{
+      text-align: center;
+    }
+  }
+
+  .song-item-vote{
+    float: left;
+    font-size: 20px; //this is affecting the arror size.
+
+    .arrow {
+      border-style: none;
+      padding: 0px;
+      width: 15px;
+      height: 10px;
+    }
+
+    form {
+      margin: 0px;
+      width:20px;
+
+      //Remove shadow around arrows
+      input, textarea {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .song-item-title {
+    @include song-cell-base;
+    margin-left: 0px;
+  }
+
+  .song-item-artist {
+    @include song-cell-base;
+  }
+
+  .song-item-username {
+    @include song-cell-base;
+  }
+}
+
+
+
+

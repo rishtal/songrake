@@ -20,19 +20,17 @@
 </div>
 
 <div class="row">
-  <div class="span5">
-    <div class="songs-rakers span3">
-        <%= @playlist.song_count %> Songs | 
-        <%= @playlist.user_count %> Rakers
-    </div>
-    <div class="span10">
-      <% if playlist_member_or_creator?(@playlist) %>
-        <br><br>
-        <%= render "songs/form" %>
-      <% end %>
-    </div>
+  <div class="songs-rakers span4">
+    <%= @playlist.song_count %> Songs |
+    <%= @playlist.user_count %> Rakers
+  </div>
+  <div id="add-song-bar" class="span10 offset1">
+    <% if playlist_member_or_creator?(@playlist) %>
+      <%= render "songs/form" %>
+    <% end %>
   </div>
 </div>
+
 
 <div class="row">
   <div class="span4">
@@ -51,20 +49,20 @@
       </div>
     </div>
   </div>
-  <div class="span10">
-    <table class="zebra-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th>Song</th>
-          <th>Artist</th>
-          <th>Raker</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @playlist.songs %>
-      </tbody>
-    </table>
+  <div class="span12">
+    <div class="row song-table-title">
+      <div class="span4 offset1"><p>Song Name</p></div>
+      <div class="span4"><p>Artist</p></div>
+      <div class="span3"><p>Requester</p></div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <% @playlist.songs.each do |s| %>
+          <div class="<%= cycle('odd_song', 'even_song')%> playlist-song-item">
+            <%= render :partial => "songs/song", :locals => {:song => s} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

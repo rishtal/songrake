@@ -1,51 +1,18 @@
-
-<div class="row">
-  <div class="span12">
-    <tr>
-      <td class="rank">
-        <%= song.plusminus %>
-      </td>
-      <td class="votecell">
-        <%= form_tag :controller => "songs", :action => "upvote" do %>
-          <%= hidden_field_tag "id", song.id %>
-          <%= image_submit_tag("arrow_up.png", :class => 'arrowup') %>
-        <% end %>
-        <%= form_tag :controller => "songs", :action => "downvote" do %>
-          <%= hidden_field_tag "id", song.id %>
-          <%= image_submit_tag("arrow_down.png", :class => 'arrowdown') %>
-        <% end %>
-      </td>
-      <td><%= song.title %></td>
-      <td><%= song.artist %></td>
-      <td><%= song.requester.username %></td>
-    </tr>
+<div class="row song-item">
+  <div class="span1 plusminus-vote">
+    <div class="song-item-plusminus"><p><%= song.plusminus %></p></div>
+    <div class="song-item-vote">
+      <%= form_tag :controller => "songs", :action => "upvote" do %>
+        <%= hidden_field_tag "id", song.id %>
+        <%= image_submit_tag("arrow_up.png", :class => 'arrow') %>
+      <% end %>
+      <%= form_tag :controller => "songs", :action => "downvote" do %>
+        <%= hidden_field_tag "id", song.id %>
+        <%= image_submit_tag("arrow_down.png", :class => 'arrow') %>
+      <% end %>
+    </div>
   </div>
+  <div class="span4 song-item-title"><p><%= song.title %></p></div>
+  <div class="span4 song-item-artist"><p><%= song.artist %></p></div>
+  <div class="span3 song-item-username"><p><%= song.requester.username %></p></div>
 </div>
-<!--
-<div class="row">
-  <div class="span2">
-    <tr>
-      <td><%= song.title %></td>
-      <td><%= song.artist %></td>
-      <td><%= song.requester.username %></td>
-    </tr>
-  </div>
-</div>
-<tr>
-  <td><%= song.votes_for %></td>
-  <td>
-    <%= form_tag :controller => "songs", :action => "upvote" do %>
-      <%= hidden_field_tag "id", song.id %>
-      <%= image_submit_tag("arrow_up.png", :class => 'arrowup') %>
-    <% end %>
-    <%= form_tag :controller => "songs", :action => "downvote" do %>
-      <%= hidden_field_tag "id", song.id %>
-      <%= image_submit_tag("arrow_down.png", :class => 'arrowdown') %>
-    <% end %>
-  </td>
-  <td></td>
-  <td><%= song.title %></td>
-  <td><%= song.artist %></td>
-  <td><%= song.requester.username %></td>
-</tr>
--->
