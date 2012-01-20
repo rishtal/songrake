@@ -1,21 +1,23 @@
 <%= render "flash_messages/notice" %>
 
-<div class="row">
-  <div class="span12 offset4 title">
-    My Rakes
+<div class=row>
+  <div class="span12 offset2 title">
+    <%=@user.username %> - <a id="karma-count" rel="popover" data-original-title="Karma" data-content="How awesome you are. If you have little or no karma, don't worry! Add songs that people love (and will vote on) and watch yourself become a karma king!"><%= @user.karma %></a>
   </div>
 </div>
 
 <div class="row">
-  <div class="span4">
-    <div class="sidebar">
-      <div class="row"><div class="span4"><h1>Me</h1></div></div>
-      <div class="row"><div class="span4"><b>Username:</b>  <%= @user.username %></div></div>
-      <div class="row"><div class="span4"><b>Email:</b>  <%= @user.email %></div></div>
-      <div class="row"><div class="span4"><b>Karma:</b>  <%= @user.karma %></div></div>
-    </div>
+  <div class="span12 offset2 rake-header">
+    <h1>Rakes</h1>
   </div>
-  <div class="span12">
+</div>
+
+<% if @playlists.length > 0 %>
+
+  
+
+<div class="row">
+  <div class="span12 offset2">
     <table>
       <tbody>
       <% @playlists.each do |playlist| %>
@@ -27,3 +29,45 @@
     </table>
   </div>
 </div>
+
+<% else %>
+
+  <% if current_user == @user %>
+
+  <div class="row">
+    <div class="span12 offset2">
+      <div class="songrake-text">
+        You haven't joined or created any rakes yet :(
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12 offset2 no-rakes-buttons">
+      <%= link_to "Browse existing Rakes", playlists_path, :class=>"btn primary"%>
+      <div id="create-btn"
+           class="btn secondary"
+           data-controls-modal="playlist-form-modal"
+           data-backdrop="true"
+           data-keyboard="true">Create a Rake</div>
+    </div>
+  </div>
+
+  <% else %>
+
+  <div class="row">
+    <div class="span12 offset2">
+      <div class="songrake-text no-rakes-text">
+        <%= @user.username %> hasn't joined or created any rakes yet.
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
+<% end %>
+
+<script type="text/javascript">
+  $('a[rel=popover]').popover({
+    offset: 20
+  })
+</script>
