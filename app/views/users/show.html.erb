@@ -8,7 +8,12 @@
 
 <div class="row">
   <div class="span12 offset2 rake-header">
-    <h1>Rakes</h1>
+
+    <% if @user == current_user %>
+      <h1>My Rakes</h1>
+    <% else %>
+      <h1><%= @user.username%>'s Rakes</h1>
+    <% end %>
   </div>
 </div>
 
@@ -67,7 +72,12 @@
 <% end %>
 
 <script type="text/javascript">
-  $('a[rel=popover]').popover({
+  $('#karma-count').popover({
     offset: 20
+  })
+
+  $('.join-playlist-btn').popover({
+    offset: 10,
+    placement: "below"
   })
 </script>
