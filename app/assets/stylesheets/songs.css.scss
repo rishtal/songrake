@@ -4,5 +4,56 @@
 
 .songs {
 
-  
 }
+
+.addsongs {
+    margin-left: 240px;
+    width: 730px;
+}
+
+.arrowup {
+  border-style: none;
+  width: 15px;
+  height: 50%;
+}
+
+.arrowdown {
+  border-style: none;
+  width: 15px;
+  height: 30%;
+}
+
+.voteaction {
+  width: 60px;
+  vertical-align: top;
+}
+
+.votecell {
+  background: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  text-align: center;
+  vertical-align: baseline;
+
+  width: 1px;
+
+  form {
+    margin: 0px;
+    background: 0px;
+  }
+}
+
+.rank {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  text-align: center;
+  vertical-align: baseline;
+  background: none;
+  float: right;
+  }

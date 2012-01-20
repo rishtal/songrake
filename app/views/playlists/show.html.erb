@@ -2,53 +2,69 @@
 <%= render "flash_messages/notice" %>
 
 <div class="row">
-  <div class="span5">
+  <div class="span13">
     <h1><%= @playlist.name %></h1>
   </div>
-  <div class="span1 offset4">
+  <div class="span2">
     <%= form_tag :controller => "playlists", :action => "join" do %>
-      <%= hidden_field_tag "playlist_id", @playlist.id %>
-      <%= submit_tag "Join Rake", :class => "btn"%>
+    <%= hidden_field_tag "playlist_id", @playlist.id %>
+    <%= submit_tag "Become A Raker", :class => "btn primary"%>
     <% end %>
   </div>
 </div>
 
-<% if playlist_member_or_creator?(@playlist) %>
-<br><br>
-<h3>Submit a song</h3>
-<br>
-  <%= render "songs/form" %>
-<% end %>
-
-<br><br>
-<h3>Song list</h3>
-<br>
-<table>
-  <thead>
-    <tr>
-      <th>Song</th>
-      <th>Artist</th>
-    </tr>
-  </thead>
-  <tbody>
-  <%= render @playlist.songs %>
-  </tbody>
-</table>
-
-<br><br>
-<h3>Creator</h3>
 <div class="row">
-  <div class="span2">Creator:</div>
-  <div class="span5"><%= @creator.username %></div>
+  <div class="span5">
+    <h3>By &nbsp;&nbsp;<%= link_to "#{@creator.username}", user_profile_path(@creator.id) %></h3>
+  </div>
 </div>
 
-<br><br>
-<h3>Members</h3>
-<table>
-  <thead><tr><th>Name</th></tr></thead>
-  <tbody>
-  <% @members.each do |m| %>
-    <tr><td><%= m.username %></td></tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="span5">
+    <div class="songs-rakers span3">
+        <%= @playlist.song_count %> Songs | 
+        <%= @playlist.user_count %> Rakers
+    </div>
+    <div class="span10">
+      <% if playlist_member_or_creator?(@playlist) %>
+        <br><br>
+        <%= render "songs/form" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <div class="sidebar">
+      <div class="row">
+        <div class="span4">
+          <h3>Rakers</h3>
+            <table class="rakers">
+              <tbody>
+              <% @members.each do |m| %>
+                <tr><td><%= link_to "#{m.username}", user_profile_path(m.id) %></td></tr>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="span10">
+    <table class="zebra-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Song</th>
+          <th>Artist</th>
+          <th>Raker</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @playlist.songs %>
+      </tbody>
+    </table>
+  </div>
+</div>

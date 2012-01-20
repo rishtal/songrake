@@ -1,9 +1,7 @@
-<%= simple_form_for(@song) do |f| %>
+<%= form_for(@song) do |f| %>
   <% if @song.errors.any? %>
-
     <div id="error_explanation">
       <h2><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h2>
-
       <ul>
       <% @song.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,14 +9,22 @@
       </ul>
     </div>
   <% end %>
-
-  <%= f.input :title, :label => 'Song Name'%>
-  <%= f.input :artist, :label => 'artist'%>
-  <% if @playlist %>
-    <%= f.hidden_field :playlist_id, :value => @playlist.id %>
-  <% else %>
-    <%= f.input :playlist_id, :label => 'playlist id' %>
-  <% end %>
-  <%= f.button :submit, 'Add Song Request', :class => "btn"%>
-<% end %>
-
+  <div class="addsongs">
+    <div class="row">
+       <div class="span4">
+          <%= f.text_field :title, :type => "text", :placeholder => "Song Name" %>
+        </div>
+        <div class="span4">
+          <%= f.text_field :artist, :type => "text", :placeholder => "Artist"  %>
+          <% if @playlist %>
+            <%= f.hidden_field :playlist_id, :value => @playlist.id %>
+          <% else %>
+            <%= f.text_field :playlist_id, :label => 'playlist id' %>
+          <% end %>
+        </div>
+        <div class="span1">
+          <%= f.submit 'Add Song', :class => "btn"%>
+          <% end %>
+        </div>
+    </div>
+  </div>
