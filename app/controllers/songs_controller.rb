@@ -109,7 +109,7 @@ class SongsController < SongRakeController
       return
     end
 
-    if current_user.voted_for?(@song)
+    if current_user.voted_for?(@song) || current_user.voted_against?(@song)
       redirect_to :back, notice: "You have already voted on this song"
       return
     end

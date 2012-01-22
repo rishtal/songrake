@@ -21,6 +21,21 @@
 
   //**** playlist/show ********************************
 
+  .sub-title {
+    font-size:20px;
+  }
+
+  .become-raker-text {
+    margin-top:50px;
+    margin-bottom: 20px;
+    font-size:20px;
+    line-height: 30px;
+  }
+
+  .become-raker-button {
+    margin-bottom:50px;
+  }
+
   .sidebar {
     background: whiteSmoke;
     padding: 10px;
@@ -32,8 +47,13 @@
     width: 90%
   }
 
+  #add-song-header {
+    margin-top: 75px;
+  }
+
   #add-song-bar {
-    margin-left: 75px;
+    margin-bottom: 50px;
+    margin-top:    25px;
   }
 
   .song-table-title {

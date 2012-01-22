@@ -1,16 +1,22 @@
 <div class="row song-item">
   <div class="span1 plusminus-vote">
     <div class="song-item-plusminus"><p><%= song.plusminus %></p></div>
-    <div class="song-item-vote">
-      <%= form_tag :controller => "songs", :action => "upvote" do %>
-        <%= hidden_field_tag "id", song.id %>
-        <%= image_submit_tag("arrow_up.png", :class => 'arrow') %>
-      <% end %>
-      <%= form_tag :controller => "songs", :action => "downvote" do %>
-        <%= hidden_field_tag "id", song.id %>
-        <%= image_submit_tag("arrow_down.png", :class => 'arrow') %>
-      <% end %>
-    </div>
+
+    <% if playlist_member_or_creator?(playlist) %>
+
+      <div class="song-item-vote">
+        <%= form_tag :controller => "songs", :action => "upvote" do %>
+          <%= hidden_field_tag "id", song.id %>
+          <%= image_submit_tag("arrow_up.png", :class => 'arrow') %>
+        <% end %>
+        <%= form_tag :controller => "songs", :action => "downvote" do %>
+          <%= hidden_field_tag "id", song.id %>
+          <%= image_submit_tag("arrow_down.png", :class => 'arrow') %>
+        <% end %>
+      </div>
+
+    <% end %>
+    
   </div>
   <div class="span4 song-item-title"><p><%= song.title %></p></div>
   <div class="span4 song-item-artist"><p><%= song.artist %></p></div>
