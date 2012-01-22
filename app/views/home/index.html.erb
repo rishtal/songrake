@@ -1,49 +1,25 @@
 <%= render "flash_messages/notice" %>
 
 <section id="header-section">
-  <header id="songrake-header">
-    <h1 id="songrake-title">SongRake</h1>
-    <h3>Create Rakes with your friends</h3>
-  </header>
-</section>
-
-<section id="about-section">
-  <div class="row">
-    <div class="span12 offset4">
+  <div class="row banner">
+    <div class="span12 innerbanner">
       <div class="row">
-        <div class="home-title">
-          About
+        <div class="span8">
+          <div class="logo">
+              <h1>SongRake</h1>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div id="about-list">
-          <ol>
-            <li>Add songs to request list</li>
-            <li>Fast & Efficient</li>
-            <li>Make hour holiday party a breeze & fun</li>
-            <li>Keep your DJ in the know</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="signup-section">
-  <div class="row">
-    <div class="span12 offset4">
-      <div class="row">
-        <div class="home-title">Sign up</div>
-      </div>
-      <div class="row">
-        <div id="signup">
-          <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-            <%= f.input :username %>
-            <%= f.input :email %>
-            <%= f.input :password %>
-            <%= f.input :password_confirmation %>
-            <div><%= f.button :submit, :class => "btn", :id => "signup-button"%></div>
+        <div class="span1">
+          <div id="signup-section">
+            <h4 class="note">New to SongRake? Signup today!</h4>
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+              <%= f.text_field :username, :type => "text", :placeholder => 'Username', :class => "input" %>
+              <%= f.text_field :email, :type => "text", :placeholder => 'Email', :class => "input" %>
+              <%= f.text_field :password, :type => "password", :placeholder => 'Password', :class => "input" %>
+              <%= f.text_field :password_confirmation, :type => "password", :placeholder => 'Confirm Password', :class => "input" %>
+              <div><%= f.submit 'Signup', :class => "btn primary", :id => "signup-button"%></div>
           <% end %>
+        </div>
         </div>
       </div>
     </div>
@@ -54,7 +30,7 @@
   <div class="row">
     <div class="span12 offset4">
       <div class="row">
-        <div class="home-title">Rakes</div>
+        <div class="home-title">Browse Rakes</div>
       </div>
     </div>
   </div>
@@ -66,5 +42,7 @@
     </div>
   </div>
 </section>
+
+
 
 

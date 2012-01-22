@@ -25,8 +25,10 @@
     </div>
   </div>
 <div class="row">
-  <div id="add-song-bar" class="span10 offset2">
+  <div id="add-song-bar" class="span11 offset2">
+    <div class="alert-message block-message success fade in" data-alert="alert">
       <%= render "songs/form" %>
+    </div>
   </div>
 </div>
 
@@ -34,16 +36,16 @@
 
 <div class="row">
   <div class="span12 offset2 become-raker-text">
-    Have an opinion about the songs in this Rake? Become a Raker and vote on the songs or add your own!
-  </div>
-</div>
-
-<div class="row">
-  <div class="span2 offset2 become-raker-button">
-    <%= form_tag :controller => "playlists", :action => "join" do %>
-      <%= hidden_field_tag "playlist_id", @playlist.id %>
-      <%= submit_tag "Become A Raker", :class => "btn primary"%>
-    <% end %>
+    <div class="alert-message block-message info fade in" data-alert="alert">
+      <p>
+      Have an opinion about the songs in this Rake? Become a Raker and vote on the songs or add your own!</p>
+      <div class="span2 offset2 become-raker-button">
+        <%= form_tag :controller => "playlists", :action => "join" do %>
+        <%= hidden_field_tag "playlist_id", @playlist.id %>
+        <%= submit_tag "Become A Raker", :class => "btn primary"%>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
   
