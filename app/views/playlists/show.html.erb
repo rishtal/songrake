@@ -1,14 +1,15 @@
 
 <%= render "flash_messages/notice" %>
 
+
 <div class="row">
-  <div class="span12 offset2 page-header">
-    <div class="title"><%= @playlist.name %></div>
+  <div class="span16 page-header">
+    <div class="playlist-show-title"><%= @playlist.name %></div>
   </div>
 </div>
 
 <div class="row">
-  <div class="span8 offset2 sub-title">
+  <div class="span12 sub-title">
     By &nbsp;&nbsp;<%= link_to "#{@creator.username}", user_profile_path(@creator.id) %>
   </div>
   <div class="span4 sub-title">
@@ -17,78 +18,85 @@
   </div>
 </div>
 
-<% if playlist_member_or_creator?(@playlist) %>
 
-  <div class="row">
-    <div id="add-song-header" class="span12 offset2 page-header">
-      <h1>Add Song</h1>
-    </div>
-  </div>
-<div class="row">
-  <div id="add-song-bar" class="span11 offset2">
-    <div class="alert-message block-message success fade in" data-alert="alert">
-      <%= render "songs/form" %>
-    </div>
-  </div>
-</div>
-
-<% else %>
 
 <div class="row">
-  <div class="span12 offset2 become-raker-text">
-    <div class="alert-message block-message info fade in" data-alert="alert">
-      <p>
-      Have an opinion about the songs in this Rake? Become a Raker and vote on the songs or add your own!</p>
-      <div class="span2 offset2 become-raker-button">
-        <%= form_tag :controller => "playlists", :action => "join" do %>
-        <%= hidden_field_tag "playlist_id", @playlist.id %>
-        <%= submit_tag "Become A Raker", :class => "btn primary"%>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-  
-<% end %>
+  <div class="span12">
 
-<% if @playlist.songs.length > 0 %>
+    <% if playlist_member_or_creator?(@playlist) %>
 
-  <div class="row">
-    <div class="span12">
-      <div class="row song-table-title">
-        <div class="span4 offset1"><p>Song Name</p></div>
-        <div class="span4"><p>Artist</p></div>
-        <div class="span3"><p>Requester</p></div>
-      </div>
-    </div>
-  </div>
-
-<% end %>
-
-<div class="row">
-
-  <% if @playlist.songs.length > 0 %>
-    
-    <div class="span12">
+      <!--<div class="row">
+        <div id="add-song-header" class="span12 page-header">
+          <h1>Add Song</h1>
+        </div>
+      </div>-->
       <div class="row">
-        <div class="span12">
-          <% @playlist.songs.each do |s| %>
-            <div class="<%= cycle('odd_song', 'even_song')%> playlist-song-item">
-              <%= render :partial => "songs/song", :locals => {:song => s, :playlist => @playlist} %>
-            </div>
-          <% end %>
+        <div id="add-song-bar" class="span12">
+          <div class="alert-message block-message success fade in" data-alert="alert">
+            <%= render "songs/form" %>
+          </div>
         </div>
       </div>
+
+    <% else %>
+
+      <div class="row">
+        <div class="span12 become-raker-text">
+          <div class="alert-message block-message info fade in" data-alert="alert">
+              <p>Have an opinion about the songs in this Rake? Become a Raker and vote on the songs or add your own!</p>
+            <div class="span2 become-raker-button">
+              <%= form_tag :controller => "playlists", :action => "join" do %>
+                <%= hidden_field_tag "playlist_id", @playlist.id %>
+                <%= submit_tag "Become A Raker", :class => "btn primary"%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+    <% if @playlist.songs.length > 0 %>
+
+      <div class="row">
+        <div class="span12">
+          <div class="row song-table-title">
+            <div class="span4 offset1"><p>Song Name</p></div>
+            <div class="span4"><p>Artist</p></div>
+            <div class="span3"><p>Requester</p></div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="row">
+
+      <% if @playlist.songs.length > 0 %>
+
+        <div class="span12">
+          <div class="row">
+            <div class="span12">
+              <% @playlist.songs.each do |s| %>
+                <div class="<%= cycle('odd_song', 'even_song')%> playlist-song-item">
+                  <%= render :partial => "songs/song", :locals => {:song => s, :playlist => @playlist} %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+
+        <div class="span11 offset1">
+          <h3>No songs have been added yet! Be the first Raker to add a song.</h3>
+        </div>
+
+      <% end %>
+
     </div>
 
-  <% else %>
-
-    <div class="span11 offset1">
-      <h3>No songs have been added yet! Be the first Raker to add a song.</h3>
-    </div>
-
-  <% end %>
-
+  </div>
   <div class="span4">
     <div class="sidebar">
       <div class="row">
@@ -112,5 +120,6 @@
       </div>
     </div>
   </div>
-
 </div>
+
+

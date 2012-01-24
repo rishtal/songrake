@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <div class="addsongs">
-    <div class="row">
+    <div class="row add-song-row">
        <div class="span4">
           <%= f.text_field :title, :type => "text", :placeholder => "Song Name" %>
         </div>
@@ -22,8 +22,8 @@
             <%= f.text_field :playlist_id, :label => 'playlist id' %>
           <% end %>
         </div>
-        <div class="span1">
-          <%= f.submit 'Add Song', :class => "btn"%>
+        <div class="span2">
+          <%= f.submit 'Add Song', :class => "btn primary"%>
           <% end %>
         </div>
     </div>

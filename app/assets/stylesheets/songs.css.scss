@@ -6,6 +6,11 @@
 
 }
 
+//**** song/_form ********************************
+.add-song-row {
+  padding-left: 45px;
+}
+
 //**** song/_song ********************************
 
 @mixin song-cell-base {
@@ -13,8 +18,14 @@
   float: left;
 
   p {
-    font-size:20px;
-    line-height:45px;
+    font-size:15px;
+    padding-top: 15px;
+    line-height:20px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
 
@@ -61,14 +72,18 @@
   .song-item-title {
     @include song-cell-base;
     margin-left: 0px;
+    width: 230px;
   }
 
   .song-item-artist {
     @include song-cell-base;
+    width: 230px;
+    margin-left: 10px;
   }
 
   .song-item-username {
     @include song-cell-base;
+    margin-left: 10px;
   }
 }
 

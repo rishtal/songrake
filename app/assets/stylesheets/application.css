@@ -23,4 +23,8 @@
   line-height: 50px;
   padding-bottom: 50px;
   padding-top: 30px;
-} 
+}
+
+.topbar-link {
+  text-decoration: underline;
+}

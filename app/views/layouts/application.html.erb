@@ -11,7 +11,13 @@
 <div class="topbar">
   <div class="fill">
     <div class="container">
-      <a class="brand" href="/">SongRake</a>
+
+      <% if user_signed_in? %>
+        <%= link_to "SongRake", user_profile_path(current_user.id), :class => "brand" %>
+      <% else %>
+        <%= link_to "SongRake", root_path, :class => "brand" %>
+      <% end %>
+
       <ul class="nav pills">
         <li><%= link_to "Browse", playlists_url %></li>
         <li>
@@ -24,11 +30,12 @@
       <div id="user-login" class="pull-right">
 
         <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>. Not you?
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> |
-          <%= link_to('My Profile', user_profile_path(current_user)) %>
+          Welcome <%= current_user.username %>!
+          <%= link_to('My Profile', user_profile_path(current_user), :class => "topbar-link") %> |
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "topbar-link") %>
         <% else %>
-          <%= link_to('Login', new_user_session_path)  %>
+          <%= link_to('Login', new_user_session_path, :class => "topbar-link")  %> |
+          <%= link_to('Sign up', new_user_registration_path, :class => "topbar-link") %>
         <% end %>
       </div>
     </div>
