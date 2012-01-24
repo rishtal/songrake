@@ -86,35 +86,35 @@ class SongsController < SongRakeController
 
   def upvote
     @song = Song.find(params[:id])
-
-    if current_user == @song.requester
-      redirect_to :back, notice: "You can't upvote your own song. Nice try though :)"
-      return
-    end
-
-    if current_user.voted_for?(@song)
-      redirect_to :back, notice: "You have already voted on this song"
-      return
-    end
-
-    current_user.vote_for(@song)
-    redirect_to :back, notice: "Thanks for your vote!"
+    vote_on_song(@song, true)
   end
 
   def downvote
     @song = Song.find(params[:id])
+    vote_on_song(@song, false)
+  end
 
-    if current_user == @song.requester
-      redirect_to :back, notice: "You can't downvote your own song. Why would you want to do that?"
+  private
+
+  def vote_on_song(song, vote)
+
+    if current_user == song.requester
+      redirect_to :back, notice: "You can't vote on your own song. Nice try though :)"
       return
     end
 
-    if current_user.voted_for?(@song) || current_user.voted_against?(@song)
+    if current_user.voted_on?(song) 
       redirect_to :back, notice: "You have already voted on this song"
       return
     end
 
-    current_user.vote_against(@song)
+    if vote
+      current_user.vote_for(song)
+    else
+      current_user.vote_against(song)
+    end
+    
     redirect_to :back, notice: "Thanks for your vote!"
   end
+
 end
