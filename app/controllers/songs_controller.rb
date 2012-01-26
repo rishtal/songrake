@@ -51,9 +51,9 @@ class SongsController < SongRakeController
 
     respond_to do |format|
       if @song.save
-        format.html { redirect_to playlist_path(@song.playlist_id), notice: 'Song was successfully created.' }
+        format.html { redirect_to playlist_path(@song.playlist_id), :flash => { :success => 'Song was successfully created.' }}
       else
-        format.html { redirect_to playlist_path(params[:song][:playlist_id]), notice: 'Song has already been added.'}
+        format.html { redirect_to playlist_path(params[:song][:playlist_id]), :flash => { :error => 'Song has already been added.'}}
       end
     end
   end
@@ -99,12 +99,12 @@ class SongsController < SongRakeController
   def vote_on_song(song, vote)
 
     if current_user == song.requester
-      redirect_to :back, notice: "You can't vote on your own song. Nice try though :)"
+      redirect_to :back, :flash => { :error => "You can't vote on your own song. Nice try though :)" }
       return
     end
 
     if current_user.voted_on?(song) 
-      redirect_to :back, notice: "You have already voted on this song"
+      redirect_to :back, :flash => { :error => "You have already voted on this song" }
       return
     end
 
@@ -114,7 +114,7 @@ class SongsController < SongRakeController
       current_user.vote_against(song)
     end
     
-    redirect_to :back, notice: "Thanks for your vote!"
+    redirect_to :back, :flash => { success: "Thanks for your vote!" }
   end
 
 end

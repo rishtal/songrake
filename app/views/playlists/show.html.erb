@@ -1,7 +1,4 @@
 
-<%= render "flash_messages/notice" %>
-
-
 <div class="row">
   <div class="span16 page-header">
     <div class="playlist-show-title"><%= @playlist.name %></div>
@@ -25,11 +22,6 @@
 
     <% if playlist_member_or_creator?(@playlist) %>
 
-      <!--<div class="row">
-        <div id="add-song-header" class="span12 page-header">
-          <h1>Add Song</h1>
-        </div>
-      </div>-->
       <div class="row">
         <div id="add-song-bar" class="span12">
           <div class="alert-message block-message success fade in" data-alert="alert">
@@ -55,6 +47,8 @@
       </div>
 
     <% end %>
+
+    <%= render "flash_messages/notice" %>
 
     <% if @playlist.songs.length > 0 %>
 
