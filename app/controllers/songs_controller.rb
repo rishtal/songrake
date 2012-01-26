@@ -98,11 +98,6 @@ class SongsController < SongRakeController
 
   def vote_on_song(song, vote)
 
-    if current_user == song.requester
-      redirect_to :back, :flash => { :error => "You can't vote on your own song. Nice try though :)" }
-      return
-    end
-
     if current_user.voted_on?(song) 
       redirect_to :back, :flash => { :error => "You have already voted on this song" }
       return

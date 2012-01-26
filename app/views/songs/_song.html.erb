@@ -1,17 +1,47 @@
 <div class="row song-item">
   <div class="span1 plusminus-vote">
-    <div class="song-item-plusminus"><p><%= song.plusminus %></p></div>
+    <div class="song-item-plusminus">
+      
+      <!-- Twipsy. Need to add $("a[rel=twipsy]")({live: true}) into parent html file for it to work-->
+      <p><a href="#" data-placement="left" rel='twipsy' title="Vote count">
+        <%= song.plusminus %>
+      </a></p>
+    </div>
 
     <% if playlist_member_or_creator?(playlist) %>
 
       <div class="song-item-vote">
         <%= form_tag :controller => "songs", :action => "upvote" do %>
           <%= hidden_field_tag "id", song.id %>
-          <%= image_submit_tag("arrow_up.png", :class => 'arrow') %>
+
+          <a href="#" data-placement="above" rel='twipsy' title="Vote up song">
+          <% if current_user.voted_for?(song) %>
+
+            <%= image_submit_tag("arrow_up_selected.png", :class => 'arrow') %>
+
+          <% else %>
+
+            <%= image_submit_tag("arrow_up.png", :class => 'arrow') %>
+
+          <% end %>
+          </a>
+
         <% end %>
         <%= form_tag :controller => "songs", :action => "downvote" do %>
           <%= hidden_field_tag "id", song.id %>
-          <%= image_submit_tag("arrow_down.png", :class => 'arrow') %>
+
+          <a href="#" data-placement="below" rel='twipsy' title="Vote down song">
+          <% if current_user.voted_against?(song) %>
+
+            <%= image_submit_tag("arrow_down_selected.png", :class => 'arrow') %>
+
+          <% else %>
+
+            <%= image_submit_tag("arrow_down.png", :class => 'arrow') %>
+
+          <% end %>
+          </a>
+          
         <% end %>
       </div>
 
