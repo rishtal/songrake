@@ -14,9 +14,11 @@
     <div class="container">
 
       <% if user_signed_in? %>
-        <%= link_to "SongRake", user_profile_path(current_user.id), :class => "brand" %>
+        <%= image_submit_tag("/assets/images/songrake_logo2.png", :class => 'brand') %>
+        <!--<%= link_to "SongRake", user_profile_path(current_user.id), :class => "brand" %>-->
       <% else %>
-        <%= link_to "SongRake", root_path, :class => "brand" %>
+      <%= image_tag("songrake_logo2.png", :class => 'brand') %>
+       <!-- <%= link_to "SongRake", root_path, :class => "brand" %> -->
       <% end %>
 
       <ul class="nav pills">
