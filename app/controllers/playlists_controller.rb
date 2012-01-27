@@ -63,7 +63,7 @@ class PlaylistsController < SongRakeController
 
     respond_to do |format|
       if !error
-        format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
+        format.html { redirect_to @playlist, :flash => { :success => 'Playlist was successfully created.' }}
       else
         format.html { render action: "new" }
       end
@@ -102,7 +102,7 @@ class PlaylistsController < SongRakeController
       if @role.save
         format.html { redirect_to playlist_path(@playlist.id), notice: "Successfully joined playlist"}
       else
-        format. html { redirect_to playlist_path(@playlist.id), notice: "You are already a member of this playlist"}
+        format. html { redirect_to playlist_path(@playlist.id), :flash => { :error => "You are already a member of this playlist" }}
       end
     end
   end

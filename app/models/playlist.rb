@@ -2,7 +2,7 @@
 class Playlist < ActiveRecord::Base
   has_many :playlist_roles
   has_many :users, :through => :playlist_roles
-  has_many :songs
+  has_many :songs, :order => "created_at DESC"
 
   LIST_TYPE = ["Listed", "Unlisted"]
 

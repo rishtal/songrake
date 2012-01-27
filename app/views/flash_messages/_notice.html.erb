@@ -1,5 +1,5 @@
 <% if flash[:notice]%>
-  <div class="alert-message info fade in" data-alert="alert">
+  <div class="alert-message info fade in" data-alert="notice">
     <a class="close" href="#">×</a>
     <p id="notice"><strong><%= flash[:notice] %></strong></p>
   </div>
@@ -8,5 +8,17 @@
   <div class="alert-message warning" data-alert="alert">
     <a class="close" href="#">×</a>
     <p id="alert"><strong><%= flash[:alert] %></strong></p>
+  </div>
+<% end %>
+<% if flash[:error]%>
+  <div class="alert-message error" data-alert="error">
+    <a class="close" href="#">×</a>
+    <p id="error"><strong><%= flash[:error] %></strong></p>
+  </div>
+<% end %>
+<% if flash[:success]%>
+  <div class="alert-message success" data-alert="alert">
+    <a class="close" href="#">×</a>
+    <p id="success"><strong><%= flash[:success] %></strong></p>
   </div>
 <% end %>
