@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="span12 offset2 title">
-    <%=@user.username %> - <a id="karma-count" rel="popover" data-original-title="Karma" data-content="How awesome you are. If you have little or no karma, don't worry! Add songs that people love (and will vote on) and watch yourself become a karma king!"><%= @user.karma %></a>
+    <%=@user.username %>
   </div>
 </div>
 
@@ -40,9 +40,8 @@
   </div>
   <div class="row">
     <div class="span12 offset2 no-rakes-buttons">
-      <%= link_to "Browse existing Rakes", playlists_path, :class=>"btn primary"%>
       <div id="create-btn"
-           class="btn secondary"
+           class="btn primary"
            data-controls-modal="playlist-form-modal"
            data-backdrop="true"
            data-keyboard="true">Create a Rake</div>
@@ -63,6 +62,10 @@
 
 <% end %>
 
+
+<%= render "playlists/new_user_modal" %>
+
+
 <script type="text/javascript">
   $('#karma-count').popover({
     offset: 20
@@ -72,4 +75,21 @@
     offset: 10,
     placement: "below"
   })
+
+  <% if flash[:new_user] %>
+    $('#new-user-modal').modal({
+      backdrop: "static"
+    })
+    $('#new-user-modal').modal('show')
+    
+    $('#modal-create-btn').click(function() {
+      $('#new-user-modal').modal('hide')
+
+      $('#playlist-form-modal').modal({
+        backdrop: "static"
+      })
+      $('#playlist-form-modal').modal('show')
+    })
+  <% end %>
 </script>
+

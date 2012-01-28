@@ -40,7 +40,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    playlists_path
+    user_profile_path(current_user)
   end
 
 end

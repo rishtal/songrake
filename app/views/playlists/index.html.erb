@@ -16,8 +16,6 @@
   <%= will_paginate @playlists %>
 </div>
 
-<%= render "new_user_modal" %>
-
 <!--
 Do not need to have a "render form_modal" because we inherit one from
 layouts/application.html.erb
@@ -31,25 +29,5 @@ layouts/application.html.erb
         placement: "below"
       });
   })
-  
-  <% if flash[:new_user] %>
-    $('#new-user-modal').modal({
-      backdrop: "static"
-    })
-    $('#new-user-modal').modal('show')
-
-    $('#browse-btn').click(function() {
-      $('#new-user-modal').modal('hide')
-    })
-
-    $('#create-btn').click(function() {
-      $('#new-user-modal').modal('hide')
-
-      $('#playlist-form-modal').modal({
-        backdrop: "static"
-      })
-      $('#playlist-form-modal').modal('show')
-    })
-  <% end %>
 </script>
 
