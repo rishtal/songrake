@@ -8,7 +8,7 @@ gem 'rails', '3.1.3'
 gem 'devise'
 gem 'simple_form'
 gem 'thumbs_up'
-#gem 'css-bootstrap-rails'
+
 gem 'bootstrap-sass', '~> 1.4.3'
 gem 'will_paginate'
 gem "bootstrap-will_paginate", "~> 0.0.3"
