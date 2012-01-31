@@ -20,12 +20,14 @@
       <% end %>
 
       <ul class="nav pills">
-        <li>
-          <a href="#"
-             data-controls-modal="playlist-form-modal"
-             data-backdrop="true"
-             data-keyboard="true">Create</a>
-        </li>
+        <% if current_user %>
+          <li>
+            <a href="#"
+               data-controls-modal="playlist-form-modal"
+               data-backdrop="true"
+               data-keyboard="true">Create</a>
+          </li>
+        <% end %>
       </ul>
       <div id="user-login" class="pull-right">
 
