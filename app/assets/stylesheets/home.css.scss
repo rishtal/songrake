@@ -37,7 +37,15 @@
     h1 {
       font-size: 50px;
       font-weight: bold;
-      line-height: 50px;
+      line-height: 60px;
+      width: 500px;
+    }
+
+    h3 {
+      font-size: 16px;
+      line-height: 22px;
+      color: grey;
+      font-weight: normal;
     }
 
     li {
@@ -62,8 +70,11 @@
     }
 
     #signup-button {
-      margin-left: 350px;
+      margin-left: 333px;
       margin-top: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
     }
   }
 }
