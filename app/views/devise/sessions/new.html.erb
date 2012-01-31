@@ -2,12 +2,57 @@
 
 <section>
   <div class="row">
-    <div class="span12 offset4">
+    <div class="span8 left-col">
       <div class="row">
-        <div class="home-title">Sign in</div>
+        <div class="span8">
+          <div class="title">Sign up</div>
+          <div class="sub-title">Don't have an account? Create one here.</div>
+        </div>
       </div>
       <div class="row">
-        <div id="form">
+        <div class="span8">
+
+          <%= form_for(resource, :as => resource_name,
+                       :url => registration_path(resource_name),
+                       :html => {:class => "simple_form" }) do |f| %>
+
+            <div class="input">
+              <%= f.label :username %>
+              <%= f.text_field :username %>
+            </div>
+
+            <div class="input">
+              <%= f.label :email %>
+              <%= f.email_field :email %>
+            </div>
+
+            <div class="input">
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </div>
+
+            <div class="input">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation %>
+            </div>
+
+            <div>
+              <%= f.submit "Sign up", :class => "btn primary", :id =>"button" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span8">
+      <div class="row">
+        <div class="span8">
+          <div class="title">Login</div>
+          <div class="sub-title">Already have an account? Login here.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span8">
 
           <%= form_for(resource, :as => resource_name,
                        :url => session_path(resource_name),
@@ -17,7 +62,7 @@
               <%= f.label :email %>
               <%= f.email_field :email %>
             </div>
-            
+
             <div class="input">
               <%= f.label :password %>
               <%= f.password_field :password %>
@@ -31,15 +76,12 @@
             <% end -%>
 
             <div>
-              <%= f.submit "Sign in", :class => "btn primary", :id =>"button" %>
+              <%= f.submit "Login", :class => "btn primary", :id =>"button" %>
             </div>
           <% end %>
-
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<%= render :partial => "devise/shared/links" %>
 
