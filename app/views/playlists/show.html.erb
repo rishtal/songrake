@@ -35,11 +35,11 @@
       <div class="row">
         <div class="span12 become-raker-text">
           <div class="alert-message block-message info fade in" data-alert="alert">
-              <p>Have an opinion about the songs in this Rake? Become a Raker and vote on the songs or add your own!</p>
+              <h3>Become a Raker and add song requests or vote on others!</h3>
             <div class="span2 become-raker-button">
               <%= form_tag :controller => "playlists", :action => "join" do %>
                 <%= hidden_field_tag "playlist_id", @playlist.id %>
-                <%= submit_tag "Become A Raker", :class => "btn primary"%>
+                <%= submit_tag "Become a Raker", :class => "btn success"%>
               <% end %>
             </div>
           </div>
