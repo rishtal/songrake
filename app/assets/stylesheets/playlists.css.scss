@@ -92,6 +92,8 @@
     border-top-color: #DDD;
     border-top-style: solid;
     border-top-width: 1px;
+
+
   }
 
   .odd_song {
@@ -101,20 +103,21 @@
   .even_song {
     background-color: transparent;
   }
-}
 
-//**** playlist/_new_user_modal ********************************
-#new-user-modal {
-  .modal-header {
-    h1 {
-      margin-top: 18px;
+  //**** playlist/_new_user_modal ********************************
+  #new-user-modal {
+    .modal-header {
+      h1 {
+        margin-top: 18px;
+      }
+    }
+
+    .modal-body {
+      font-size: 20px;
+      line-height: 30px;
     }
   }
 
-  .modal-body {
-    font-size: 20px;
-    line-height: 30px;
-  }
 }
 
 //**** playlist/_form_modal ********************************
