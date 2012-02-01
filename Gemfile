@@ -9,7 +9,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'thumbs_up'
 
-gem 'bootstrap-sass', '~> 1.4.3'
+gem 'bootstrap-sass', '~> 1.4.4'
 gem 'will_paginate'
 gem "bootstrap-will_paginate", "~> 0.0.3"
 
