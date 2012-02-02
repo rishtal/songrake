@@ -21,6 +21,15 @@
 
   //**** playlist/show ********************************
 
+  .addthis-container {
+    position: relative;
+  }
+  .addthis_bar.addthis_bar_vertical.addthis_bar_medium {
+    position:absolute;
+    margin-left: -75px;
+    padding-top:100px;
+  }
+
   .playlist-show-title {
     font-size: 50px;
     font-weight: bold;

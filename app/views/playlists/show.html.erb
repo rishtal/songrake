@@ -1,5 +1,18 @@
 <% content_for :title, "#{@playlist.name}" %>
 
+<div class="addthis-container">
+  <div class="addthis_bar addthis_bar_vertical addthis_bar_medium">
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+      <span><a class="addthis_button_preferred_1"></a></span>
+      <span><a class="addthis_button_preferred_2"></a></span>
+      <span><a class="addthis_button_preferred_3"></a></span>
+      <span><a class="addthis_button_preferred_4"></a></span>
+      <span><a class="addthis_button_compact"></a></span>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f29d7a618fb69e7"></script>
+
 <div class="row">
   <div class="span16 page-header">
     <div class="playlist-show-title"><%= @playlist.name %></div>
