@@ -1,5 +1,7 @@
 <% content_for :title, "#{@playlist.name}" %>
 
+<!-- Share buttons -->
+
 <div class="addthis-container">
   <div class="addthis_bar addthis_bar_vertical addthis_bar_medium">
     <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -12,6 +14,8 @@
   </div>
 </div>
 <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f29d7a618fb69e7"></script>
+
+<!-- Page Header -->
 
 <div class="row">
   <div class="span16 page-header">
@@ -29,9 +33,12 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="span12">
 
+<div class="row">
+
+  <!-- Left Column -->
+
+  <div class="span12">
     <% if playlist_member_or_creator?(@playlist) %>
 
       <div class="row">
@@ -47,7 +54,7 @@
       <div class="row">
         <div class="span12 become-raker-text">
           <div class="alert-message block-message info fade in" data-alert="alert">
-              <h3>Become a Raker and add song requests or vote on others!</h3>
+            <h3>Become a Raker and add song requests or vote on others!</h3>
             <div class="span2 become-raker-button">
               <%= form_tag :controller => "playlists", :action => "join" do %>
                 <%= hidden_field_tag "playlist_id", @playlist.id %>
@@ -101,12 +108,25 @@
       <% end %>
 
     </div>
-
   </div>
+
+
+  <!-- Right Column -->
+
   <div class="span4">
     <div class="sidebar">
       <div class="row">
         <div class="span4">
+
+          <% if !@playlist.description.blank? %>
+            
+            <h3>Rake Description</h3>
+            <table class="rakers">
+              <tbody><tr><td><%= @playlist.description %></td></tr></tbody>
+            </table>
+
+          <% end %>
+
           <h3>Head Raker</h3>
           <table class="rakers">
             <tbody>
@@ -122,6 +142,7 @@
             <% end %>
             </tbody>
           </table>
+
         </div>
       </div>
     </div>
@@ -129,11 +150,11 @@
 </div>
 
 <script type="text/javascript">
-   $(function () {
+  $(function () {
     $("a[rel=twipsy]").twipsy({
       live: true
     })
-   })
+  })
 </script>
 
 
