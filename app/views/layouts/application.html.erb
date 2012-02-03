@@ -45,14 +45,15 @@
   </div>
 </div>
 
-
-<div class="container-extended">
-  <div class="container">
-    <div class="content">
-      <%= yield %>
+<% if content_for?(:homepage) %>
+  <%= yield(:homepage) %>
+<% else %>
+    <div class="container">
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
-  </div>
-</div>
+<% end %>
 
 <div id="footer">
   <div class="container">
