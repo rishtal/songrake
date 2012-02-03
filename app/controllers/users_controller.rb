@@ -1,5 +1,5 @@
 class UsersController < SongRakeController
-  skip_before_filter :authenticate_user!, :only => [] #none, have to sign in for any action
+  skip_before_filter :authenticate_user!, :only => [:show] 
   skip_before_filter :authenticate_admin, :only => [:show]
   
   def show
