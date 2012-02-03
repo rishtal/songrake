@@ -137,9 +137,19 @@
           <h3>Rakers</h3>
           <table class="rakers">
             <tbody>
-            <% @members.each do |m| %>
-              <tr><td><%= link_to "#{m.username}", user_profile_path(m.id) %></td></tr>
+
+            <% if @members.size > 0 %>
+
+              <% @members.each do |m| %>
+                <tr><td><%= link_to "#{m.username}", user_profile_path(m.id) %></td></tr>
+              <% end %>
+
+            <% else %>
+
+              <tr><td>No other Rakers at this moment. Invite your friends to come join this Rake!</td></tr>
+
             <% end %>
+
             </tbody>
           </table>
 
