@@ -55,7 +55,7 @@
   <div class="list-item-body">
     <div class="row">
       <div class="span9">
-        <% if playlist.description != "" %>
+        <% if playlist.description != "" &&  playlist.description != nil %>
           <%= playlist.description %>
         <% else %>
           <div class="no-description">No description.</div>
