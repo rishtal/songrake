@@ -78,10 +78,17 @@
   }
 
   #container-extended-2 {
-    background-color: yellow;
+    background-color: aliceBlue;
 
-      .content{
-        background-color: yellow;
+      .content {
+        background-color: aliceBlue;
+        padding: 15px;
+        text-align: center;
+        
+      }
+
+      h2 { 
+        font-weight: normal;
       }
 
   }
