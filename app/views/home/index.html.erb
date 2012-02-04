@@ -28,9 +28,20 @@
   <div id="container-extended-2">
     <div class="container">
       <div class="content">
-        <h2>Note Ready to Sign Up? Browse Rakes Below</h2>
+        <h2>Not Ready to Sign Up? Browse Rakes Below</h2>
       </div>
     </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <% @playlists.each do |playlist| %>
+        <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "home#index"} %>
+      <% end %>
+    </div>
+  </div>
+
+
   </div>
 
 <% end %>
