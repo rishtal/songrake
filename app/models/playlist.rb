@@ -28,7 +28,7 @@ class Playlist < ActiveRecord::Base
     Playlist.transaction do
       self.save!
       role = self.playlist_roles.build(:playlist_id => self.id,
-                                       :user_id => creator,
+                                       :user_id => creator.id,
                                        :role => "Creator")
       role.save!
     end
