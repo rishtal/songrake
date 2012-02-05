@@ -43,8 +43,4 @@ class Playlist < ActiveRecord::Base
     end
   end
 
-  def song_count
-    self.songs.length
-  end
-
 end
