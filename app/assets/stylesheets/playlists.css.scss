@@ -5,6 +5,11 @@
 .playlists {
 
   //**** playlist/index ********************************
+
+  .tabs {
+    margin-bottom: 50px;
+  }
+
   //Pagination hack to get it to be centered.
   //https://github.com/twitter/bootstrap/issues/304
   .pagination {
@@ -126,7 +131,6 @@
       line-height: 30px;
     }
   }
-
 }
 
 //**** playlist/_form_modal ********************************

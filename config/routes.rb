@@ -7,7 +7,9 @@ Songrake::Application.routes.draw do
   devise_for :users, :path_prefix => 'd', :controllers => {:registrations => "registrations"}
   match "users/:id" => "users#show", :as => :user_profile
 
+  get "playlists/latest"
   resources :playlists
+
   post "playlists/join"
 
   resources :songs

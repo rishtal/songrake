@@ -1,12 +1,12 @@
 class PlaylistsController < SongRakeController
-  skip_before_filter :authenticate_user!, :only => [:index, :show]
-  skip_before_filter :authenticate_admin, :only => [:index, :show, :new, :create, :join]
+  skip_before_filter :authenticate_user!, :only => [:index, :show, :latest]
+  skip_before_filter :authenticate_admin, :only => [:index, :show, :latest, :new, :create, :join]
 
   # GET /playlists
   # GET /playlists.json
   def index
     #only show listed playlist. Don't show unlisted playlists
-    @playlists = Playlist.where(:playlist_type => "Listed").paginate(:page => params[:page])
+    @playlists = Playlist.where(:playlist_type => "Listed").order('member_count DESC').paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,17 +48,13 @@ class PlaylistsController < SongRakeController
   # POST /playlists.json
   def create
 
-    error = true
-    @playlist = Playlist.new(params[:playlist])
-    @playlist.playlist_type = "Listed"
-    
-    if @playlist.save
-      @role = @playlist.playlist_roles.build(:playlist_id => @playlist.id,
-                                    :user_id => current_user.id,
-                                    :role => "Creator")
-      if @role.save
-        error = false
-      end
+    @playlist = Playlist.new
+
+    error = false
+    begin
+      @playlist.create_playlist!(params[:playlist], current_user)
+    rescue ActiveRecord::RecordInvalid
+      error = true
     end
 
     respond_to do |format|
@@ -105,5 +101,11 @@ class PlaylistsController < SongRakeController
         format. html { redirect_to playlist_path(@playlist.id), :flash => { :error => "You are already a member of this playlist" }}
       end
     end
+  end
+
+  def latest
+    @playlists = Playlist.where(:playlist_type => "Listed").order('created_at DESC').paginate(:page => params[:page])
+
+    render 'index'
   end
 end

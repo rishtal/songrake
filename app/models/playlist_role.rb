@@ -2,6 +2,8 @@ class PlaylistRole < ActiveRecord::Base
   belongs_to :playlist
   belongs_to :user
 
+  after_save :increase_counter
+
   ROLES = ["Creator", "Member"]
 
   validates :role, :presence => true, :inclusion => ROLES
@@ -17,5 +19,16 @@ class PlaylistRole < ActiveRecord::Base
   def self.playlist_member_or_creator?(playlist_id, user_id)
     @roles = PlaylistRole.where(:playlist_id =>  playlist_id, :user_id => user_id)
     return @roles.size > 0
+  end
+
+  protected
+
+  def increase_counter
+    if playlist.member_count.nil? || playlist.member_count < 1
+      playlist.member_count = 1
+    else
+      playlist.member_count += 1
+    end
+    playlist.save!
   end
 end

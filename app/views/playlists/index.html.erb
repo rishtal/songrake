@@ -4,6 +4,22 @@
   </div>
 </div>
 
+<div class ="row">
+  <div class="span12 offset2">
+    <ul class="tabs">
+      <li id="most-popular-tab"><a href="<%= playlists_path %>"><strong>Most Popular</strong></a></li>
+      <li id="latest-tab"><a href="<%= playlists_latest_path %>"><strong>Latest</strong></a></li>
+      <script type="text/javascript">
+        <% if controller.action_name == "latest" %>
+          $('#latest-tab').addClass('active');
+        <% else %>
+          $('#most-popular-tab').addClass('active');
+        <% end %>
+      </script>
+    </ul>
+  </div>
+</div>
+
 <div class="row">
   <div class="span12 offset2">
     <% @playlists.each do |playlist| %>

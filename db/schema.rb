@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111053441) do
+ActiveRecord::Schema.define(:version => 20120205223639) do
 
   create_table "playlist_roles", :force => true do |t|
     t.integer  "playlist_id"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20120111053441) do
     t.string   "playlist_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "member_count"
+    t.integer  "song_count",    :default => 0
   end
 
   create_table "songs", :force => true do |t|
