@@ -69,6 +69,8 @@
 
     <%= render "flash_messages/notice" %>
 
+    <!-- Latest/Most Popular Tabs -->
+
     <div class ="row">
       <div class="span12">
         <ul class="tabs">
@@ -87,6 +89,8 @@
 
     <% if @playlist.songs.length > 0 %>
 
+      <!-- Song Table Header --> 
+
       <div class="row">
         <div class="span12">
           <div class="row song-table-title">
@@ -102,6 +106,8 @@
     <div class="row">
 
       <% if @playlist.songs.length > 0 %>
+
+        <!-- List of songs -->
 
         <div class="span12">
           <div class="row">
