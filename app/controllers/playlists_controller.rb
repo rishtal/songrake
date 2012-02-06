@@ -1,6 +1,6 @@
 class PlaylistsController < SongRakeController
-  skip_before_filter :authenticate_user!, :only => [:index, :show, :latest]
-  skip_before_filter :authenticate_admin, :only => [:index, :show, :latest, :new, :create, :join]
+  skip_before_filter :authenticate_user!, :only => [:index, :show, :latest, :most_popular]
+  skip_before_filter :authenticate_admin, :only => [:index, :show, :latest, :most_popular, :new, :create, :join]
 
   # GET /playlists
   # GET /playlists.json
@@ -19,6 +19,8 @@ class PlaylistsController < SongRakeController
     @playlist = Playlist.find(params[:id])
     @song = Song.new
     @creator = @playlist.creator
+    
+    @songs = @playlist.songs
 
     members_roles = @playlist.playlist_roles.where(:role => "Member")
     @members = Array.new
@@ -108,4 +110,19 @@ class PlaylistsController < SongRakeController
 
     render 'index'
   end
+
+  def most_popular
+    @playlist = Playlist.find(params[:id])
+    @song = Song.new
+    @creator = @playlist.creator
+
+    @songs = @playlist.songs.sort_by {|song| song.plusminus }.reverse
+
+    members_roles = @playlist.playlist_roles.where(:role => "Member")
+    @members = Array.new
+    members_roles.each { |r| @members << r.user }
+
+    render 'show'
+  end
+
 end

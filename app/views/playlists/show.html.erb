@@ -69,6 +69,22 @@
 
     <%= render "flash_messages/notice" %>
 
+    <div class ="row">
+      <div class="span12">
+        <ul class="tabs">
+          <li id="latest-tab"><a href="<%= playlist_path(@playlist.id) %>"><strong>Latest</strong></a></li>
+          <li id="most-popular-tab"><a href="<%= playlist_most_popular_songs_path(@playlist_id) %>"><strong>Most Popular</strong></a></li>
+          <script type="text/javascript">
+            <% if controller.action_name == "most_popular" %>
+            $('#most-popular-tab').addClass('active');
+            <% else %>
+            $('#latest-tab').addClass('active');
+            <% end %>
+          </script>
+        </ul>
+      </div>
+    </div>
+
     <% if @playlist.songs.length > 0 %>
 
       <div class="row">
@@ -90,7 +106,7 @@
         <div class="span12">
           <div class="row">
             <div class="span12">
-              <% @playlist.songs.each do |s| %>
+              <% @songs.each do |s| %>
                 <div class="<%= cycle('odd_song', 'even_song')%> playlist-song-item">
                   <%= render :partial => "songs/song", :locals => {:song => s, :playlist => @playlist} %>
                 </div>
