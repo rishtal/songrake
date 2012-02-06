@@ -35,14 +35,11 @@
 
   <div class="container">
     <div class="row banner">
-        <% @playlists.each do |playlist| %>
-          <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "home#index"} %>
-        <% end %>
+      <% @playlists.each do |playlist| %>
+        <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "home#index"} %>
+      <% end %>
 
     </div>
-  </div>
-
-
   </div>
 
 <% end %>

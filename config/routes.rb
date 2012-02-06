@@ -8,6 +8,7 @@ Songrake::Application.routes.draw do
   match "users/:id" => "users#show", :as => :user_profile
 
   get "playlists/latest"
+  get "playlists/:id/most_popular" => "playlists#most_popular", :as => :playlist_most_popular_songs
   resources :playlists
 
   post "playlists/join"
