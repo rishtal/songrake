@@ -18,7 +18,7 @@ body {
 }
 
 #user-login {
-  margin-top: 10px;
+  margin-top: 12px;
   margin-right: 10px;
   color: #ffffff;
 }
@@ -33,6 +33,12 @@ body {
 
 .topbar-link {
   text-decoration: underline;
+}
+
+ul.nav.pills {
+
+    margin-top: 2px;
+
 }
 
 
