@@ -2,9 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.playlists {
+//**** playlist/index ********************************
+.playlists.index, .playlists.latest {
+  
+  .tabs {
+    margin-bottom: 50px;
+  }
 
-  //**** playlist/index ********************************
   //Pagination hack to get it to be centered.
   //https://github.com/twitter/bootstrap/issues/304
   .pagination {
@@ -17,9 +21,25 @@
       overflow: hidden;
     }
   }
+}
 
+//**** playlist/show ********************************
+.playlists.show, .playlists.most_popular {
 
-  //**** playlist/show ********************************
+  .addthis-container {
+    position: relative;
+  }
+
+  .tabs {
+    margin-top: 25px;
+  }
+
+  .addthis_bar.addthis_bar_vertical.addthis_bar_large {
+    position:absolute;
+    margin-left: -75px;
+    padding-top:90px;
+  }
+
 
   .playlist-show-title {
     font-size: 50px;
@@ -40,12 +60,16 @@
       font-size:15px;
       line-height: 20px;
     }
+
+    h3 {
+      width: 500px;
+    }
   }
 
   .become-raker-button {
-    margin-top: -10px;
-    margin-left: 495px;
-    padding-top: 10px;
+      margin-top: -31px;
+      margin-left: 530px;
+      padding-top: 0px;
   }
 
   .sidebar {
@@ -71,7 +95,6 @@
   }
 
   #add-song-bar {
-    //margin-bottom: 10px;
     margin-top:    25px;
   }
 
@@ -88,8 +111,6 @@
     border-top-color: #DDD;
     border-top-style: solid;
     border-top-width: 1px;
-
-
   }
 
   .odd_song {
@@ -99,6 +120,9 @@
   .even_song {
     background-color: transparent;
   }
+}
+
+.playlists {
 
   //**** playlist/_new_user_modal ********************************
   #new-user-modal {
@@ -113,7 +137,6 @@
       line-height: 30px;
     }
   }
-
 }
 
 //**** playlist/_form_modal ********************************
@@ -170,6 +193,7 @@
 
   .list-item-body {
     font-size: 20px;
+    line-height: 25px;
 
     .no-description {
       color: gray;

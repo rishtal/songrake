@@ -6,13 +6,19 @@
  *= require_tree .
 */
 
+/* Added min-width so that the AddThis buttons in playlist/show are visible
+    even when the browser window is narrow*/
+body {
+  min-width: 1100px;
+}
+
 #footer {
   text-align: center;
   margin: 20px;
 }
 
 #user-login {
-  margin-top: 10px;
+  margin-top: 14px;
   margin-right: 10px;
   color: #ffffff;
 }
@@ -28,3 +34,11 @@
 .topbar-link {
   text-decoration: underline;
 }
+
+ul.nav.pills {
+
+    margin-top: 2px;
+
+}
+
+

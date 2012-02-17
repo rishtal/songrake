@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SongRake</title>
+  <title><%= content_for?(:title) ? yield(:title) : "SongRake" %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27550707-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 <body class='<%= controller.controller_name %> <%= controller.action_name %>'>
 
@@ -14,19 +27,21 @@
     <div class="container">
 
       <% if user_signed_in? %>
-        <%= link_to image_tag("songrake_logo2.png"), user_profile_path(current_user.id), :class => "brand" %>
+        <%= link_to image_tag("songrake_logo3.png"), user_profile_path(current_user.id), :class => "brand" %>
       <% else %>
-       <%= link_to image_tag("songrake_logo2.png"), root_path, :class => "brand" %>
+       <%= link_to image_tag("songrake_logo3.png"), root_path, :class => "brand" %>
       <% end %>
 
       <ul class="nav pills">
         <li><%= link_to "Browse", playlists_url %></li>
-        <li>
-          <a href="#"
-             data-controls-modal="playlist-form-modal"
-             data-backdrop="true"
-             data-keyboard="true">Create</a>
-        </li>
+        <% if current_user %>
+          <li>
+            <a href="#"
+               data-controls-modal="playlist-form-modal"
+               data-backdrop="true"
+               data-keyboard="true">Create</a>
+          </li>
+        <% end %>
       </ul>
       <div id="user-login" class="pull-right">
 
@@ -35,22 +50,23 @@
           <%= link_to('My Profile', user_profile_path(current_user), :class => "topbar-link") %> |
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "topbar-link") %>
         <% else %>
-          <%= link_to('Login', new_user_session_path, :class => "topbar-link")  %> |
-          <%= link_to('Sign up', new_user_registration_path, :class => "topbar-link") %>
+          <%= link_to('Login', new_user_session_path, :class => "topbar-link")  %> or
+          <%= link_to('Sign up', new_user_session_path, :class => "topbar-link") %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-
-<div class="container-extended">
-  <div class="container">
-    <div class="content">
-      <%= yield %>
+<% if content_for?(:homepage) %>
+  <%= yield(:homepage) %>
+<% else %>
+    <div class="container">
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
-  </div>
-</div>
+<% end %>
 
 <div id="footer">
   <div class="container">
@@ -62,16 +78,10 @@
 
 <%= render :partial => "playlists/form_modal", :locals => {:playlist => Playlist.new} %>
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27550707-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+<div id="feedback-banner-container">
+  <a href="https://docs.google.com/spreadsheet/viewform?formkey=dHlyRU0tZW90RElFYUFhQTlmR255QkE6MA" target="_blank">
+    <div id="feedback-banner"></div>
+  </a>
+</div>
 </body>
 </html>

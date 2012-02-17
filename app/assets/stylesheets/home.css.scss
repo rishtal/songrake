@@ -35,16 +35,23 @@
     width: 420px;
     
     h1 {
-      font-size: 50px;
+      font-size: 45px;
       font-weight: bold;
       line-height: 50px;
+      width: 500px;
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 22px;
+      color: grey;
+      font-weight: normal;
     }
 
     li {
       color: black;
       font-size: 20px;
       line-height: 30px;
-
     }
 
   }
@@ -62,10 +69,52 @@
     }
 
     #signup-button {
-      margin-left: 350px;
+      margin-left: 333px;
       margin-top: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
     }
   }
+
+  #container-extended-2 {
+    background-color: aliceBlue;
+    margin-bottom: 80px;
+
+      .content {
+        background-color: aliceBlue;
+        padding: 15px;
+        text-align: center;
+        
+      }
+
+      h2 { 
+        font-weight: normal;
+      }
+
+
+
+  }
+
+  .playlist-list-item {
+        margin-bottom: 75px;
+        margin-left: 60px;
+
+        .list-item-body .songs-rakers {
+          color: gray;
+          font-size: 16px;
+          float: right;
+          margin-right: 20px;
+        }
+  }
+
+  .row {
+    .sharepage{
+      margin-top: 28px;
+      padding-left: 19px;
+    }
+  }
+
 }
 
 

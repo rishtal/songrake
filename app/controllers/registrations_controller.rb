@@ -40,7 +40,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    playlists_path
+    stored_location_for(resource) || playlists_path
   end
 
 end

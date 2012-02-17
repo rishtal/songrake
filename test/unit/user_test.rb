@@ -17,9 +17,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "username too short" do
-    short_name_user = FactoryGirl.build(:user, :username => "user")
+    short_name_user = FactoryGirl.build(:user, :username => "u")
     assert short_name_user.invalid?
-    assert_equal I18n.t('activerecord.errors.messages.too_short', :count => 5), short_name_user.errors[:username].join('; ')
+    assert_equal I18n.t('activerecord.errors.messages.too_short', :count => 3), short_name_user.errors[:username].join('; ')
   end
 
   test "username too long" do

@@ -1,30 +1,62 @@
-
-<%= render "flash_messages/notice" %>
-
-<div class="row banner">
-  <div id="left-header-section" class="span8">
-    <h1>SongRake</h1>
-
-
-    <ol>
-    <li>Add songs to request list</li>
-    <li>Fast & Efficient </li>
-    <li>Make hour holiday party a breeze and fun</li>
-    <li>Keep your DJ in the know</li>
-      </ol>
+<%= content_for :homepage do %>
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=323448947689909";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div class="container-extended">
+    <div class="container">
+      <div class="content">
+        <%= render "flash_messages/notice" %>
+        <div class="row banner">
+          <div id="left-header-section" class="span8">
+            <h1>Gather Songs with Your Friends</h1>
+            <h3>Create a rake and share it to make the ultimate song list.</h3>
+            <div class="row sharepage">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-text="Create a rake and share it to make the ultimate song list at " data-via="SongRake" data-hashtags="rakeitnow">Tweet</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+              </script>
+              <div class="fb-like" data-href="http://www.facebook.com/SongRake" data-send="false" data-width="350" data-show-faces="false"></div>
+            </div>
+          </div>
+          <div id="right-signup-section" class="span8">
+            <h4 id="signup-header">New to SongRake? Signup today!</h4>
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+              <%= f.text_field :username, :type => "text", :placeholder => 'Username', :class => "input" %><br>
+              <%= f.text_field :email, :type => "text", :placeholder => 'Email', :class => "input" %><br>
+              <%= f.text_field :password, :type => "password", :placeholder => 'Password', :class => "input" %><br>
+              <%= f.text_field :password_confirmation, :type => "password", :placeholder => 'Confirm Password', :class => "input" %><br>
+              <div><%= f.submit 'Sign Up', :class => "btn success", :id => "signup-button"%></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="right-signup-section" class="span8">
-    <h4 id="signup-header">New to SongRake? Signup today!</h4>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-      <%= f.text_field :username, :type => "text", :placeholder => 'Username', :class => "input" %><br>
-      <%= f.text_field :email, :type => "text", :placeholder => 'Email', :class => "input" %><br>
-      <%= f.text_field :password, :type => "password", :placeholder => 'Password', :class => "input" %><br>
-      <%= f.text_field :password_confirmation, :type => "password", :placeholder => 'Confirm Password', :class => "input" %><br>
-      <div><%= f.submit 'Signup', :class => "btn primary", :id => "signup-button"%></div>
-    <% end %>
-  </div>
-</div>
 
+  <div id="container-extended-2">
+    <div class="container">
+      <div class="content">
+        <h2>Not Ready to Sign Up? Browse Rakes Below</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row banner">
+      <% @playlists.each do |playlist| %>
+        <%= render :partial => "playlists/playlist", :locals => {:playlist => playlist, :view => "home#index"} %>
+      <% end %>
+
+    </div>
+  </div>
+
+<% end %>
 
 
 

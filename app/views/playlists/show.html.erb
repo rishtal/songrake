@@ -1,3 +1,19 @@
+<% content_for :title, "#{@playlist.name}" %>
+
+<!-- Share buttons -->
+<div class="addthis-container">
+  <div class="addthis_bar addthis_bar_vertical addthis_bar_large">
+    <div class="addthis_toolbox addthis_default_style">
+      <span><a class="addthis_button_facebook_like" fb:like:layout="box_count"></a></span>
+      <span><a class="addthis_button_tweet" tw:count="vertical"></a></span>
+      <span><a class="addthis_button_google_plusone" g:plusone:size="tall"></a></span>
+      <span><a class="addthis_counter"></a></span>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f33281016cc9025"></script>
+
+<!-- Page Header -->
 
 <div class="row">
   <div class="span16 page-header">
@@ -11,15 +27,16 @@
   </div>
   <div class="span4 sub-title">
     <%= @playlist.song_count %> Songs |
-    <%= @playlist.user_count %> Rakers
+    <%= @playlist.member_count %> Rakers
   </div>
 </div>
 
 
-
 <div class="row">
-  <div class="span12">
 
+  <!-- Left Column -->
+
+  <div class="span12">
     <% if playlist_member_or_creator?(@playlist) %>
 
       <div class="row">
@@ -35,11 +52,11 @@
       <div class="row">
         <div class="span12 become-raker-text">
           <div class="alert-message block-message info fade in" data-alert="alert">
-              <p>Have an opinion about the songs in this Rake? Become a Raker and vote on the songs or add your own!</p>
+            <h3>Become a Raker and add songs or vote on others!</h3>
             <div class="span2 become-raker-button">
               <%= form_tag :controller => "playlists", :action => "join" do %>
                 <%= hidden_field_tag "playlist_id", @playlist.id %>
-                <%= submit_tag "Become A Raker", :class => "btn primary"%>
+                <%= submit_tag "Become a Raker", :class => "btn success"%>
               <% end %>
             </div>
           </div>
@@ -50,14 +67,34 @@
 
     <%= render "flash_messages/notice" %>
 
+    <!-- Latest/Most Popular Tabs -->
+
+    <div class ="row">
+      <div class="span12">
+        <ul class="tabs">
+          <li id="latest-tab"><a href="<%= playlist_path(@playlist.id) %>"><strong>Latest</strong></a></li>
+          <li id="most-popular-tab"><a href="<%= playlist_most_popular_songs_path(@playlist_id) %>"><strong>Most Popular</strong></a></li>
+          <script type="text/javascript">
+            <% if controller.action_name == "most_popular" %>
+            $('#most-popular-tab').addClass('active');
+            <% else %>
+            $('#latest-tab').addClass('active');
+            <% end %>
+          </script>
+        </ul>
+      </div>
+    </div>
+
     <% if @playlist.songs.length > 0 %>
+
+      <!-- Song Table Header --> 
 
       <div class="row">
         <div class="span12">
           <div class="row song-table-title">
             <div class="span4 offset1"><p>Song Name</p></div>
             <div class="span4"><p>Artist</p></div>
-            <div class="span3"><p>Requester</p></div>
+            <div class="span3"><p>Raker</p></div>
           </div>
         </div>
       </div>
@@ -68,10 +105,12 @@
 
       <% if @playlist.songs.length > 0 %>
 
+        <!-- List of songs -->
+
         <div class="span12">
           <div class="row">
             <div class="span12">
-              <% @playlist.songs.each do |s| %>
+              <% @songs.each do |s| %>
                 <div class="<%= cycle('odd_song', 'even_song')%> playlist-song-item">
                   <%= render :partial => "songs/song", :locals => {:song => s, :playlist => @playlist} %>
                 </div>
@@ -89,12 +128,25 @@
       <% end %>
 
     </div>
-
   </div>
+
+
+  <!-- Right Column -->
+
   <div class="span4">
     <div class="sidebar">
       <div class="row">
         <div class="span4">
+
+          <% if !@playlist.description.blank? %>
+            
+            <h3>Rake Description</h3>
+            <table class="rakers">
+              <tbody><tr><td><%= @playlist.description %></td></tr></tbody>
+            </table>
+
+          <% end %>
+
           <h3>Head Raker</h3>
           <table class="rakers">
             <tbody>
@@ -105,11 +157,22 @@
           <h3>Rakers</h3>
           <table class="rakers">
             <tbody>
-            <% @members.each do |m| %>
-              <tr><td><%= link_to "#{m.username}", user_profile_path(m.id) %></td></tr>
+
+            <% if @members.size > 0 %>
+
+              <% @members.each do |m| %>
+                <tr><td><%= link_to "#{m.username}", user_profile_path(m.id) %></td></tr>
+              <% end %>
+
+            <% else %>
+
+              <tr><td>No other Rakers at this moment. Invite your friends to come join this Rake!</td></tr>
+
             <% end %>
+
             </tbody>
           </table>
+
         </div>
       </div>
     </div>
@@ -117,11 +180,11 @@
 </div>
 
 <script type="text/javascript">
-   $(function () {
+  $(function () {
     $("a[rel=twipsy]").twipsy({
       live: true
     })
-   })
+  })
 </script>
 
 

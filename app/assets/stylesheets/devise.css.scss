@@ -38,3 +38,44 @@
     }
   }
 }
+
+.sessions.new {
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 35px;
+    padding-top:50px;
+    padding-bottom: 0px;
+  }
+
+  .sub-title {
+    font-size: 14px;
+    line-height: 25px;
+    padding-bottom: 50px;
+    color: Grey;
+  }
+
+  section {
+
+    .left-col {
+      border-right: 2px solid lightGrey;
+      margin-right: -2px;
+    }
+
+    form .input {
+      margin-left: 0px
+    }
+
+    label {
+      width: 150px;
+      font-size: 20px;
+      line-height: 22px;
+    }
+
+    #button {
+      margin-left: 0px;
+      margin-top: 20px;
+    }
+  }
+}

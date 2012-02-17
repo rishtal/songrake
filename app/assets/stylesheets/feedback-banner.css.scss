@@ -1,0 +1,20 @@
+#feedback-banner-container{
+  position:fixed;
+  bottom:50%;
+  right:0;
+  cursor:pointer;
+  z-index: 10000;
+}
+
+#feedback-banner-container #feedback-banner {
+  height:104px;
+  width:25px;
+  background-image: url('/assets/feedback_banner_white_text.png');
+  background-color: #267BB6;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+#feedback-banner-container #feedback-banner:hover{
+  background-color: orange;
+}

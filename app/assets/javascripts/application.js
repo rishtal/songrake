@@ -6,5 +6,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.placeholder
 //= require bootstrap
 //= require_tree .
+
+
+//Fix so that the placeholder text works for IE9 and other older browsers. The fix is actually
+//vendor/assets/javascripts/jquery.placeholder.js
+
+$(document).ready(function() {
+  $('input[placeholder], textarea[placeholder]').placeholder();
+})

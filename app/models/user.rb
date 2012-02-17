@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   ROLE = ["User", "Admin"]
 
-  validates :username, :uniqueness => true, :length => {:in => 5..20}
+  validates :username, :uniqueness => true, :length => {:in => 3..20}
   validates :role, :presence => true, :inclusion => ROLE
 
 end
